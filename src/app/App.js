@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
-import RunningPaceCalculator from './main';
+import DistanceInput from './distanceInput';
 
 function App() {
   return (
     <>
       <div className="App">
-        <RunningPaceCalculator/>
+        <DistanceInput distance={1}/>
       </div>
     </>
   );

@@ -1,56 +1,46 @@
-import {Button, Form} from 'react-bootstrap';
 import React from 'react';
+import {Form, Button} from 'antd';
+import PropTypes from 'prop-types';
 
 const TimeInput = ({
-  controlId,
-  label,
-  showHours,
   hours,
   minutes,
   seconds,
-  onHoursIncrement,
-  onHoursDecrement,
-  onMinutesIncrement,
-  onMinutesDecrement,
-  onSecondsIncrement,
-  onSecondsDecrement,
+  onHoursChange,
+  onMinutesChange,
+  onSecondsChange,
 }) => {
   return (
-    <Form.Group controlId={controlId}>
-      <Form.Label>{label}</Form.Label>
-      <div className="d-flex">
-        {showHours && (
-          <div className="me-3">
-            <Button variant="secondary" onClick={onHoursDecrement}>
-              -
-            </Button>
-            <span className="mx-2">{hours}</span>
-            <Button variant="secondary" onClick={onHoursIncrement}>
-              +
-            </Button>
-          </div>
-        )}
-        <div className="me-3">
-          <Button variant="secondary" onClick={onMinutesDecrement}>
-            -
-          </Button>
-          <span className="mx-2">{minutes}</span>
-          <Button variant="secondary" onClick={onMinutesIncrement}>
-            +
-          </Button>
+    <Form.Item label="Час">
+      <div style={{display: 'flex', alignItems: 'center'}}>
+        <Button onClick={onHoursChange(-1)}>-</Button>
+        <div
+          style={{width: 40, textAlign: 'center', margin: '0 10px'}}>{hours}
         </div>
-        <div>
-          <Button variant="secondary" onClick={onSecondsDecrement}>
-            -
-          </Button>
-          <span className="mx-2">{seconds}</span>
-          <Button variant="secondary" onClick={onSecondsIncrement}>
-            +
-          </Button>
+        <Button onClick={onHoursChange(1)}>+</Button>
+        <span>:</span>
+        <Button onClick={onMinutesChange(-1)}>-</Button>
+        <div
+          style={{width: 40, textAlign: 'center', margin: '0 10px'}}>{minutes}
         </div>
+        <Button onClick={onMinutesChange(1)}>+</Button>
+        <span>:</span>
+        <Button onClick={onSecondsChange(-1)}>-</Button>
+        <div
+          style={{width: 40, textAlign: 'center', margin: '0 10px'}}>{seconds}
+        </div>
+        <Button onClick={onSecondsChange(1)}>+</Button>
       </div>
-    </Form.Group>
+    </Form.Item>
   );
 };
-
+TimeInput.propTypes = {
+  hours: PropTypes.number,
+  minutes: PropTypes.number,
+  seconds: PropTypes.number,
+  onHoursChange: PropTypes.number,
+  onMinutesChange: PropTypes.func,
+  onSecondsChange: PropTypes.func,
+};
 export default TimeInput;
+
