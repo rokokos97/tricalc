@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Counter from './components/counter';
+import TimeInput from './components/timeInput';
 
 const Block = ({item}) => {
   console.log(item);
@@ -10,7 +10,7 @@ const Block = ({item}) => {
       <span>  </span>
       <span>{item.measurement}</span>
       {item.fields.map((field, index)=>(
-        <Counter
+        <TimeInput
           key={index}
           field={field} />
       ),

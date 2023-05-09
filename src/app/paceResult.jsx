@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PaceResult = ({distance, timeInMs, showMs}) => {
-  const paceInMs = timeInMs / distance;
-  const pace = new Date(paceInMs).toISOString().substr(14, showMs ? 10 : 5);
+const PaceResult = ({pace}) => {
+  if (!pace) {
+    return null;
+  }
 
   return (
-    <div className="mt-4">
-      <h4>Темп бігу:</h4>
-      <p>{pace} на км</p>
+    <div className="text-center mt-5">
+      <h2>{`Темп бігу: ${pace} на км`}</h2>
     </div>
   );
 };
+
 PaceResult.propTypes = {
-  distance: PropTypes.number,
-  timeInMs: PropTypes.number,
-  showMs: PropTypes.string,
+  pace: PropTypes.string,
 };
 export default PaceResult;
