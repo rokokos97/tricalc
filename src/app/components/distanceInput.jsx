@@ -15,14 +15,13 @@ const DistanceInput = ({
     {label: 'Marathon', value: 42.195},
   ];
   const handleChange = (value) => {
-    console.log(value);
     onChange(value);
   };
   return (
     <div>
       <Select
         defaultValue={defaultOption}
-        style={{width: 220}}
+        style={{width: distanceList}}
         onChange={handleChange}
         options={distanceList}
       />
@@ -32,7 +31,7 @@ const DistanceInput = ({
 DistanceInput.propTypes = {
   defaultOption: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.number,
   onChange: PropTypes.func,
   error: PropTypes.string,
   options: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

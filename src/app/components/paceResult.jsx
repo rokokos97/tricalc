@@ -8,7 +8,7 @@ const PaceResult = ({pace}) => {
 
   return (
     <div className="text-center mt-5">
-      <h2>{`Темп бігу: ${pace} на км`}</h2>
+      <h2>{`Your pace: ${pace} min/km`}</h2>
     </div>
   );
 };
