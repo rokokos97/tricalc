@@ -16,10 +16,10 @@ This app is designed for people who want to improve their results!
 
 | [Docs](https://react.dev/learn) | [Quick start](https://react.dev/learn/installation) |
 
-## ant
+## ant.designe
 <p> 
     <a href="https://react.dev/">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js logo" height="140">
+        <img src="https://www.specbee.com/sites/default/files/inline-images/Ant.png" alt="React.js logo" height="140">
     </a>
 </p>
 <p>  
