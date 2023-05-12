@@ -1,6 +1,8 @@
 import React from 'react';
-import RunCalculator from './runCalculator';
+// import RunCalculator from './components/runCalculator';
+import SwimCalculator from './components/swimCalculator';
 function App() {
-  return <RunCalculator />;
+  return <SwimCalculator/>;
+  // return <RunCalculator />;
 }
 export default App;
