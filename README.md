@@ -5,24 +5,24 @@ This app is designed for people who want to improve their results!
 ## Technologies and libraries:
 
 ## ReactJS
-<p style="text-align:center"> 
+<p> 
     <a href="https://react.dev/">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js logo" height="140">
     </a>
 </p>
-<p style="text-align:center">  
+<p>  
     The library for web and native user interfaces.
 </p>
 
 | [Docs](https://react.dev/learn) | [Quick start](https://react.dev/learn/installation) |
 
 ## ant
-<p style="text-align:center"> 
+<p> 
     <a href="https://react.dev/">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js logo" height="140">
     </a>
 </p>
-<p style="text-align:center">  
+<p>  
     The library for web and native user interfaces.
 </p>
 
