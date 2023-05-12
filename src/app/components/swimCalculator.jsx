@@ -5,11 +5,15 @@ const SwimCalculator = () => {
   const [hours, setHours] = useState(initState);
   const [minutes, setMinutes] = useState(initState);
   const [seconds, setSeconds] = useState(initState);
-  const [distance, setDistance] = useState(initState);
+  const [distance, setDistance] = useState(100);
   const [pace, setPace] = useState(null);
   const [form]=Form.useForm();
   const handleHoursChange = (hoursValue) => {
-    setHours(hoursValue);
+    if (hoursValue===null) {
+      setHours(0);
+    } else {
+      setHours(hoursValue);
+    }
   };
   const handleMinutesChange = (minutesValue) => {
     setMinutes(minutesValue);
@@ -22,24 +26,23 @@ const SwimCalculator = () => {
   };
   const handleFinish = () => {
     console.log('handleFinish');
-    calculatePace();
+    calculatePace(distance, hours, minutes, seconds);
   };
   const handleReset = () => {
     setPace(null);
     form.resetFields();
   };
-  const calculatePace = () => {
-    const totalSeconds =
-      parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds);
-    const paceInSeconds = totalSeconds / parseInt(distance);
-    const paceInMinutes = Math.floor(paceInSeconds / 60);
-    const paceInMSeconds = Math.round(
-        (paceInSeconds - paceInMinutes * 60) * 1000);
-    setPace(`${paceInMinutes}'${paceInMSeconds}"`);
-  };
+
+  function calculatePace(distance, hours, minutes, seconds) {
+    const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+    const pacePer100m = totalSeconds / (distance/100);
+    const minutesPer100m = Math.floor(pacePer100m / 60);
+    const secondsPer100m = Math.floor(pacePer100m % 60);
+    setPace( `${minutesPer100m}':${secondsPer100m}" per 100m`);
+  }
   return (
     <>
-      <Card title="RUN PACE CALCULATOR" bordered={true} style={{margin: 20}}>
+      <Card title="SWIM PACE CALCULATOR" bordered={true} style={{margin: 20}}>
         <Form
           form={form}
           onFinish={handleFinish}
@@ -47,7 +50,7 @@ const SwimCalculator = () => {
             hours: 0,
             minutes: 0,
             seconds: 0,
-            distance: null,
+            distance: 100,
           }}
         >
           <Form.Item
@@ -84,8 +87,8 @@ const SwimCalculator = () => {
             />
           </Form.Item>
           <Form.Item
-            label='distance'
-            name="distance"
+            label='distance in miters'
+            name='distance'
           >
             <InputNumber
               min={100}
