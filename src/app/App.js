@@ -1,6 +1,6 @@
 import React from 'react';
-import Main from './main';
+import RunCalculator from './runCalculator';
 function App() {
-  return <Main />;
+  return <RunCalculator />;
 }
 export default App;
