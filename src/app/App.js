@@ -1,10 +1,19 @@
 import React from 'react';
 import TriCalculator from './components/triCalculator';
-// import RunCalculator from './components/runCalculator';
-// import SwimCalculator from './components/swimCalculator';
+import {Route, Routes} from 'react-router';
+import RunCalculator from './components/runCalculator';
+import SwimCalculator from './components/swimCalculator';
+import Main from './components/main';
 function App() {
-  return <TriCalculator/>;
-  // return <SwimCalculator/>;
-  // return <RunCalculator />;
+  return (
+    <div>
+      <Routes>
+        <Route index element={<Main/>}/>
+        <Route path={'/run'} element={<RunCalculator/>}/>
+        <Route path={'/swim'} element={<SwimCalculator/>}/>
+        <Route path={'/tri'} element={<TriCalculator/>}/>
+      </Routes>
+    </div>
+  );
 }
 export default App;

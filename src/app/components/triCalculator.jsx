@@ -86,9 +86,9 @@ const TriCalculator = () => {
 
     const hours = Math.floor(totalTime / 3600);
     const minutes = Math.floor((totalTime % 3600) / 60);
-    const seconds = totalTime % 60;
+    const seconds = (totalTime % 60).toFixed();
 
-    setRaceTime(`${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+    setRaceTime(`${hours}:${minutes.toString().padStart(2, '0')}':${seconds.toString().padStart(2, '0')}"`);
   };
   return (
     <>
