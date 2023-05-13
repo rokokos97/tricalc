@@ -26,5 +26,6 @@ module.exports = {
         'FunctionExpression': false,
       },
     }],
+    'max-len': ['error', {'code': 120}],
   },
 };
