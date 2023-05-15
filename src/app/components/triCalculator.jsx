@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Form, InputNumber, Select, Button, Card} from 'antd';
+import NavBar from './navBar';
 
 const TriCalculator = () => {
   const initState = 0;
@@ -93,11 +94,13 @@ const TriCalculator = () => {
   return (
     <>
       <Card
-        title="TRIATHLON RACE TIME CALCULATOR"
+        title={<NavBar/>}
         bordered={true}
-        style={{margin: 20}}
+        style={{margin: 20, textAlign: 'center'}}
       >
+        <h3>TRIATHLON RACE TIME CALCULATOR</h3>
         <Form
+          style={{textAlign: 'left'}}
           form={form}
           onFinish={handleFinish}
           initialValues={{
@@ -114,7 +117,7 @@ const TriCalculator = () => {
           }}
         >
           <Form.Item
-            label='distance'
+            // label='distance'
             name="distance"
           >
             <Select

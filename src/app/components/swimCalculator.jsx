@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Card, Form, InputNumber} from 'antd';
+import NavBar from './navBar';
 const SwimCalculator = () => {
   const initState = 0;
   const [hours, setHours] = useState(initState);
@@ -42,8 +43,10 @@ const SwimCalculator = () => {
   }
   return (
     <>
-      <Card title="SWIM PACE CALCULATOR" bordered={true} style={{margin: 20}}>
+      <Card title={<NavBar/>} bordered={true} style={{margin: 20, textAlign: 'center'}}>
+        <h3>SWIM PACE CALCULATOR</h3>
         <Form
+          style={{textAlign: 'left'}}
           form={form}
           onFinish={handleFinish}
           initialValues={{
@@ -54,10 +57,10 @@ const SwimCalculator = () => {
           }}
         >
           <Form.Item
-            label='hours'
             name='hours'
           >
             <InputNumber
+              addonBefore={'hours'}
               min={0}
               max={59}
               value={hours}
@@ -65,10 +68,10 @@ const SwimCalculator = () => {
             />
           </Form.Item>
           <Form.Item
-            label='minutes'
             name='minutes'
           >
             <InputNumber
+              addonBefore={'minutes'}
               min={0}
               max={59}
               value={minutes}
@@ -76,10 +79,10 @@ const SwimCalculator = () => {
             />
           </Form.Item>
           <Form.Item
-            label='seconds'
             name='seconds'
           >
             <InputNumber
+              addonBefore={'seconds'}
               min={0}
               max={59}
               value={seconds}
@@ -87,10 +90,10 @@ const SwimCalculator = () => {
             />
           </Form.Item>
           <Form.Item
-            label='distance in miters'
             name='distance'
           >
             <InputNumber
+              addonBefore={'distance in miters'}
               min={100}
               max={10000}
               value={distance}

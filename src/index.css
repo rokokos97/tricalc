@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.header {
+  height: 20%;
+  background: black;
+  color: white;
+  text-align: center;
+}
+.alight-center {
+  text-align: center;
+}
+.form-item {
+  display: inline;
+}

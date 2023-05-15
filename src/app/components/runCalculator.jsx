@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Form, InputNumber, Select, Button, Card} from 'antd';
+import NavBar from './navBar';
 
 const RunCalculator = () => {
   const initState = 0;
   const [hours, setHours] = useState(initState);
   const [minutes, setMinutes] = useState(initState);
   const [seconds, setSeconds] = useState(initState);
-  const [distance, setDistance] = useState(1);
+  const [distance, setDistance] = useState(null);
   const [pace, setPace] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(false);
   const distanceOptions = [
     {label: '1000 miters', value: 1},
     {label: '5000 miters', value: 5},
@@ -27,15 +29,14 @@ const RunCalculator = () => {
     setSeconds(secondsValue);
   };
   const handleDistanceChange = (distanceValue) => {
-    console.log(distanceValue);
     setDistance(distanceValue);
   };
   const handleFinish = () => {
-    console.log('handleFinish');
     calculatePace();
   };
   const handleReset = () => {
     setPace(null);
+    setIsDisabled(false);
     form.resetFields();
   };
   const calculatePace = () => {
@@ -44,13 +45,20 @@ const RunCalculator = () => {
     const paceInSeconds = totalSeconds / parseInt(distance);
     const paceInMinutes = Math.floor(paceInSeconds / 60);
     const paceInMSeconds = Math.round(
-        (paceInSeconds - paceInMinutes * 60) * 1000);
+        (paceInSeconds - paceInMinutes * 60));
     setPace(`${paceInMinutes}'${paceInMSeconds}"`);
   };
+  useEffect(() => {
+    if (distance && (hours>0 || minutes>0 || seconds>0)) {
+      setIsDisabled(true);
+    }
+  }, [distance, hours, minutes, seconds]);
   return (
     <>
-      <Card title="RUN PACE CALCULATOR" bordered={true} style={{margin: 20}}>
+      <Card title={<NavBar/>} bordered={true} style={{margin: 20, textAlign: 'center'}}>
+        <h3>RUN PACE CALCULATOR</h3>
         <Form
+          style={{textAlign: 'left'}}
           form={form}
           onFinish={handleFinish}
           initialValues={{
@@ -61,10 +69,10 @@ const RunCalculator = () => {
           }}
         >
           <Form.Item
-            label='hours'
             name='hours'
           >
             <InputNumber
+              addonBefore={'hours:'}
               min={0}
               max={59}
               value={hours}
@@ -72,10 +80,10 @@ const RunCalculator = () => {
             />
           </Form.Item>
           <Form.Item
-            label='minutes'
             name='minutes'
           >
             <InputNumber
+              addonBefore={'minutes:'}
               min={0}
               max={59}
               value={minutes}
@@ -83,10 +91,10 @@ const RunCalculator = () => {
             />
           </Form.Item>
           <Form.Item
-            label='seconds'
             name='seconds'
           >
             <InputNumber
+              addonBefore={'seconds:'}
               min={0}
               max={59}
               value={seconds}
@@ -94,10 +102,10 @@ const RunCalculator = () => {
             />
           </Form.Item>
           <Form.Item
-            label='distance'
             name="distance"
           >
             <Select
+              addonBefore={'distance:'}
               style={{
                 width: '100%',
               }}
@@ -108,7 +116,7 @@ const RunCalculator = () => {
             </Select>
           </Form.Item>
           <Form.Item wrapperCol={{offset: 8, span: 16}}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" disabled={!isDisabled ? true : false}>
               Submit
             </Button>
             <Button
