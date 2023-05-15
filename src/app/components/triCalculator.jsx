@@ -117,7 +117,6 @@ const TriCalculator = () => {
           }}
         >
           <Form.Item
-            // label='distance'
             name="distance"
           >
             <Select
@@ -127,103 +126,117 @@ const TriCalculator = () => {
             >
             </Select>
           </Form.Item>
+          <div style={{display: 'flex'}}>
+            <Form.Item
+              name='swimMin'
+            >
+              <InputNumber
+                addonBefore={'swim pace per 100m'}
+                addonAfter={'min'}
+                min={0}
+                max={59}
+                value={minutesSwim}
+                onChange={handleMinutesSwimChange}
+              />
+            </Form.Item>
+            <Form.Item
+              // label=" "
+              name='swimSec'
+            >
+              <InputNumber
+                addonAfter={'sec'}
+                min={0}
+                max={59}
+                value={secondsSwim}
+                onChange={handleSecondsSwimChange}
+              />
+            </Form.Item>
+          </div>
+          <div style={{display: 'flex'}}>
+            <Form.Item
+              name='t1Min'
+            >
+              <InputNumber
+                addonBefore={'Transit zone 1'}
+                addonAfter={'min'}
+                min={0}
+                max={59}
+                value={minutesT1}
+                onChange={handleMinutesT1Change}
+              />
+            </Form.Item>
+            <Form.Item
+              name='t1Sec'
+            >
+              <InputNumber
+                addonAfter={'sec'}
+                min={0}
+                max={59}
+                value={secondsT1}
+                onChange={handleSecondsT1Change}
+              />
+            </Form.Item>
+          </div>
           <Form.Item
-            label='swim pace per 100m'
-            name='swimMin'
-          >
-            <InputNumber
-              min={0}
-              max={59}
-              value={minutesSwim}
-              onChange={handleMinutesSwimChange}
-            />
-          </Form.Item>
-          <Form.Item
-            label=" "
-            name='swimSec'
-          >
-            <InputNumber
-              min={0}
-              max={59}
-              value={secondsSwim}
-              onChange={handleSecondsSwimChange}
-            />
-          </Form.Item>
-          <Form.Item
-            label='Transit zone 1'
-            name='t1Min'
-          >
-            <InputNumber
-              min={0}
-              max={59}
-              value={minutesT1}
-              onChange={handleMinutesT1Change}
-            />
-          </Form.Item>
-          <Form.Item
-            label=' '
-            name='t1Sec'
-          >
-            <InputNumber
-              min={0}
-              max={59}
-              value={secondsT1}
-              onChange={handleSecondsT1Change}
-            />
-          </Form.Item>
-          <Form.Item
-            label='Bike speed km per hour'
             name='bikeSpeed'
           >
             <InputNumber
+              addonBefore={'Bike speed'}
+              addonAfter={'km / hour'}
               min={10}
               max={50}
               value={bikeSpeed}
               onChange={handleBikeSpeedChange}
             />
           </Form.Item>
-          <Form.Item
-            label='Transit zone 2'
-            name='t2Min'
-          >
-            <InputNumber
-              min={0}
-              max={59}
-              value={minutesT2}
-              onChange={handleMinutesT2Change}
-            />
-          </Form.Item>
-          <Form.Item
-            label=' '
-            name='t2Sec'>
-            <InputNumber
-              min={0}
-              max={59}
-              value={secondsT2}
-              onChange={handleSecondsT2Change}
-            />
-          </Form.Item>
-          <Form.Item
-            label='Run pace per 1km'
-            name='runSec'
-          >
-            <InputNumber
-              min={0}
-              max={59}
-              value={minutesRun}
-              onChange={handleMinutesRunChange}
-            />
-          </Form.Item>
-          <Form.Item
-            label=' '
-            name='runMin'>
-            <InputNumber
-              min={0}
-              max={59}
-              value={secondsRun}
-              onChange={handleSecondsRunChange}
-            />
-          </Form.Item>
+          <div style={{display: 'flex'}}>
+            <Form.Item
+              name='t2Min'
+            >
+              <InputNumber
+                addonBefore={'Transit zone 2'}
+                addonAfter={'min'}
+                min={0}
+                max={59}
+                value={minutesT2}
+                onChange={handleMinutesT2Change}
+              />
+            </Form.Item>
+            <Form.Item
+              name='t2Sec'>
+              <InputNumber
+                addonAfter={'sec'}
+                min={0}
+                max={59}
+                value={secondsT2}
+                onChange={handleSecondsT2Change}
+              />
+            </Form.Item>
+          </div>
+          <div style={{display: 'flex'}}>
+            <Form.Item
+              name='runMin'
+            >
+              <InputNumber
+                addonBefore={'Run pace per 1km'}
+                addonAfter={'min'}
+                min={0}
+                max={59}
+                value={minutesRun}
+                onChange={handleMinutesRunChange}
+              />
+            </Form.Item>
+            <Form.Item
+              name='runSec'>
+              <InputNumber
+                addonAfter={'sec'}
+                min={0}
+                max={59}
+                value={secondsRun}
+                onChange={handleSecondsRunChange}
+              />
+            </Form.Item>
+          </div>
           <Form.Item wrapperCol={{offset: 8, span: 16}}>
             <Button type="primary" htmlType="submit">
               Submit
