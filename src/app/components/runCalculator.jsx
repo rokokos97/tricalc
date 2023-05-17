@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Form, InputNumber, Select, Button, Card} from 'antd';
+import {Form, Input, Button, Card, Stepper} from 'antd-mobile';
 import NavBar from './navBar';
 
 const RunCalculator = () => {
@@ -7,7 +7,7 @@ const RunCalculator = () => {
   const [hours, setHours] = useState(initState);
   const [minutes, setMinutes] = useState(initState);
   const [seconds, setSeconds] = useState(initState);
-  const [distance, setDistance] = useState(null);
+  const [distance] = useState(null);
   const [pace, setPace] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
   const distanceOptions = [
@@ -28,9 +28,9 @@ const RunCalculator = () => {
   const handleSecondsChange = (secondsValue) => {
     setSeconds(secondsValue);
   };
-  const handleDistanceChange = (distanceValue) => {
-    setDistance(distanceValue);
-  };
+  // const handleDistanceChange = (distanceValue) => {
+  //   setDistance(distanceValue);
+  // };
   const handleFinish = () => {
     calculatePace();
   };
@@ -71,8 +71,8 @@ const RunCalculator = () => {
           <Form.Item
             name='hours'
           >
-            <InputNumber
-              addonBefore={'hours:'}
+            <Stepper
+              type={'number'}
               min={0}
               max={59}
               value={hours}
@@ -82,7 +82,7 @@ const RunCalculator = () => {
           <Form.Item
             name='minutes'
           >
-            <InputNumber
+            <Input
               addonBefore={'minutes:'}
               min={0}
               max={59}
@@ -93,7 +93,7 @@ const RunCalculator = () => {
           <Form.Item
             name='seconds'
           >
-            <InputNumber
+            <Input
               addonBefore={'seconds:'}
               min={0}
               max={59}
@@ -104,16 +104,16 @@ const RunCalculator = () => {
           <Form.Item
             name="distance"
           >
-            <Select
-              addonBefore={'distance:'}
-              style={{
-                width: '100%',
-              }}
-              placeholder='Choose your distance'
-              onChange={handleDistanceChange}
-              options={distanceOptions}
-            >
-            </Select>
+            {/* <Select */}
+            {/*   addonBefore={'distance:'} */}
+            {/*   style={{ */}
+            {/*     width: '100%', */}
+            {/*   }} */}
+            {/*   placeholder='Choose your distance' */}
+            {/*   onChange={handleDistanceChange} */}
+            {/*   options={distanceOptions} */}
+            {/* > */}
+            {/* </Select> */}
           </Form.Item>
           <Form.Item wrapperCol={{offset: 8, span: 16}}>
             <Button type="primary" htmlType="submit" disabled={!isDisabled ? true : false}>
