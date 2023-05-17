@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Form, Input, Button, Card, Stepper} from 'antd-mobile';
 import NavBar from './navBar';
 
-const RunCalculator = () => {
+const RunCalculatorDesctop = () => {
   const initState = 0;
   const [hours, setHours] = useState(initState);
   const [minutes, setMinutes] = useState(initState);
@@ -134,4 +134,4 @@ const RunCalculator = () => {
   );
 };
 
-export default RunCalculator;
+export default RunCalculatorDesctop;
