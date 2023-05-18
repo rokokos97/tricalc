@@ -3,7 +3,6 @@ import {Form, Button, PickerView, AutoCenter} from 'antd-mobile';
 import {useForm} from 'antd/lib/form/Form';
 import {runPaceCalculator} from '../utils/runPaceCalculator';
 import {valueArr} from '../utils/valueArr';
-import NavBar from './navBar';
 
 const RunCalculatorMobile = () => {
   const initState = 0;
