@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Form, InputNumber, Select, Button, Card} from 'antd';
 import NavBar from './navBar';
 
-const TriCalculator = () => {
+const TriCalculatorDesktop = () => {
   const initState = 0;
   const [distance, setDistance] = useState(1);
   const distanceOptions = [
@@ -76,7 +76,7 @@ const TriCalculator = () => {
   const calculateRaceTime = (distance, options) => {
     const index = options.findIndex((item) => item.name === distance);
     const currentDistance = options[index];
-    console.log(currentDistance);
+
     const swimTime = (parseInt(minutesSwim) * 60 + parseInt(secondsSwim))*currentDistance.swim;
     const t1Time = parseInt(minutesT1) * 60 + parseInt(secondsT1);
     const bikeTime = currentDistance.bike / bikeSpeed * 3600;
@@ -256,4 +256,4 @@ const TriCalculator = () => {
   );
 };
 
-export default TriCalculator;
+export default TriCalculatorDesktop;

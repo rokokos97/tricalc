@@ -1,26 +1,52 @@
-import React from 'react';
-import {AutoCenter, Card} from 'antd-mobile';
-import NavBar from './navBar';
-// import NavBar from './navBar';
-// import {Card} from 'antd';
-
+import React, {useState} from 'react';
+import {AutoCenter, Selector, Space} from 'antd-mobile';
+import RunCalculatorMobile from './runCalculatorMobile';
+import SwimCalculatorMobile from './swimCalculatorMobile';
+import TriCalculatorMobile from './triCalculatorMobile';
 
 const Main = () => {
+  const [value, setValue] = useState('1');
+  const options = [
+    {
+      label: 'RUN',
+      value: '1',
+    },
+    {
+      label: 'SWIM',
+      value: '2',
+    },
+    {
+      label: 'TRI',
+      value: '3',
+    },
+  ];
+  function changeSport(v) {
+    switch (v) {
+      case '2':
+        return <SwimCalculatorMobile/>;
+      case '3':
+        return <TriCalculatorMobile/>;
+      default:
+        return <RunCalculatorMobile/>;
+    }
+  }
   return (
     <>
-      <Card title={<NavBar/>}>
-        <AutoCenter>
-          <h1>This is pace calculator by Cяйво!</h1>
-        </AutoCenter>
-      </Card>
-      {/* <Card title={<NavBar/>} bordered={true} style={{ */}
-      {/*   margin: '20px', */}
-      {/*   textAlign: 'center', */}
-      {/* }} > */}
-      {/*   <h1> */}
-      {/*     This is pace calculator by Cяйво! */}
-      {/*   </h1> */}
-      {/* </Card> */}
+      <AutoCenter>
+        <Space>
+          <Selector
+            options={options}
+            showCheckMark={false}
+            value={[value]}
+            onChange={(v) => {
+              if (v.length) {
+                setValue(v[0]);
+              }
+            }}
+          />
+        </Space>
+      </AutoCenter>
+      {changeSport(value)}
     </>
   );
 };

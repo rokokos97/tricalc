@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Button, PickerView} from 'antd-mobile';
+import {Form, Button, PickerView, AutoCenter} from 'antd-mobile';
 import {useForm} from 'antd/lib/form/Form';
 import {runPaceCalculator} from '../utils/runPaceCalculator';
 import {valueArr} from '../utils/valueArr';
+
 
 const RunCalculatorMobile = () => {
   const initState = 0;
@@ -79,13 +80,14 @@ const RunCalculatorMobile = () => {
         }
       >
         <Form.Item
+          style={{padding: '20px'}}
           name='time'
-          label={'Run time'}
+          label={<AutoCenter><h2>set your finish time hh:mm:ss</h2></AutoCenter>}
           layout={'vertical'}
         >
           <PickerView
             onChange={handleChange}
-            columns={[valueArr(), valueArr(), valueArr()]}
+            columns={[valueArr(1), valueArr(1), valueArr(1)]}
             style={{'--height': '50px', '--item-height': '3rem', 'width': '100%'}}
           />
         </Form.Item>

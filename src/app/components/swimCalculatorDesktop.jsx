@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Card, Form, InputNumber} from 'antd';
 import NavBar from './navBar';
-const SwimCalculator = () => {
+const SwimCalculatorDesktop = () => {
   const initState = 0;
   const [hours, setHours] = useState(initState);
   const [minutes, setMinutes] = useState(initState);
@@ -119,4 +119,4 @@ const SwimCalculator = () => {
   );
 };
 
-export default SwimCalculator;
+export default SwimCalculatorDesktop;
