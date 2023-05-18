@@ -15,7 +15,6 @@ const RunCalculatorMobile = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [form] = useForm();
   const basicColumns = [[
-    {label: 'choose your race', value: 'choose your race'},
     {label: '1000 miters', value: '1'},
     {label: '5000 miters', value: '5'},
     {label: '10000 miters', value: '10'},

@@ -39,11 +39,6 @@ const RunCalculatorMobile = () => {
   return (
     <>
       <AutoCenter>
-        <div style={{margin: '20px'}}>
-          <AutoCenter>
-            <NavBar/>
-          </AutoCenter>
-        </div>
         <Form
           layout={'horizontal'}
           form={form}

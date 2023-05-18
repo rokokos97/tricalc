@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {AutoCenter, Button, Form, PickerView} from 'antd-mobile';
 import {valueArr} from '../utils/valueArr';
+import {calculateRaceTime} from '../utils/raceTimeCalculate';
+import {useForm} from 'antd/lib/form/Form';
 
 
 const TriCalculatorDesktop = () => {
@@ -9,8 +11,10 @@ const TriCalculatorDesktop = () => {
   const [bikeSpeed, setBikeSpeed] = useState(['0']);
   const [t2, setT2] = useState(['0', '0']);
   const [runPace, setRunPace] = useState(['0', '0']);
-  const [distance, setDistance] = useState(1);
+  const [distance, setDistance] = useState(null);
   const [raceTime, setRaceTime] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [form] = useForm();
   const distanceOptions = [[
     {label: 'Sprint', value: 'sprint'},
     {label: 'Olympic', value: 'olympic'},
@@ -41,43 +45,37 @@ const TriCalculatorDesktop = () => {
   const handleRunPaceChange = (value) => {
     setRunPace(value);
   };
-  const calculateRaceTime = (distance, options) => {
-    const index = options.findIndex((item) => item.name === distance);
-    const currentDistance = options[index];
-    const swimTime = (parseInt(swimPace[0]) * 60 + parseInt(swimPace[1]))*currentDistance.swim;
-    const t1Time = parseInt(t1[0]) * 60 + parseInt(t1[1]);
-    const bikeTime = currentDistance.bike / bikeSpeed * 3600;
-    const t2Time = parseInt(t2[0]) * 60 + parseInt(t2[1]);
-    const runTime = parseInt(runPace[0]) * 60 + parseInt(runPace[1])*currentDistance.run;
-
-    const totalTime = swimTime + t1Time + bikeTime + t2Time + runTime;
-
-    const hours = Math.floor(totalTime / 3600);
-    const minutes = Math.floor((totalTime % 3600) / 60);
-    const seconds = (totalTime % 60).toFixed();
-
-    setRaceTime(`${hours}:${minutes.toString().padStart(2, '0')}':${seconds.toString().padStart(2, '0')}"`);
+  const handleReset = () => {
+    setRaceTime(null);
+    setIsDisabled(false);
+    setDistance(null);
+    setSwimPace(['0', '0']);
+    setT1(['0', '0']);
+    setBikeSpeed(['0']);
+    setT2(['0', '0']);
+    setRunPace(['0', '0']);
+    form.resetFields();
   };
+  useEffect(() => {
+    if (distance) {
+      setIsDisabled(true);
+    }
+  }, [distance]);
   const handleFinish = () => {
-    calculateRaceTime(distance, distanceArr);
+    setRaceTime(calculateRaceTime(distance, distanceArr, swimPace, t1, bikeSpeed, t2, runPace));
   };
   return (
     <>
       <Form
         layout={'horizontal'}
-        initialValues={
-          {
-            swimPace: ['0', '0'],
-            t1: ['0', '0'],
-            distance: 'choose your race',
-          }
-        }
+        form={form}
         footer={<>
           <Button
             color="primary"
             type="button"
             style={{width: '100%', marginBottom: '10px'}}
             size={'small'}
+            disabled={!isDisabled}
             onClick={handleFinish}
           >
             Submit
@@ -87,7 +85,7 @@ const TriCalculatorDesktop = () => {
             size='small'
             color="primary"
             type="button"
-
+            onClick={handleReset}
           >
             Reset
           </Button>
@@ -156,7 +154,7 @@ const TriCalculatorDesktop = () => {
           <PickerView
             columns={distanceOptions}
             onChange={(value) => {
-              setDistance(Number(value[0]));
+              setDistance(value[0]);
             }}
             style={{'--height': '20px', '--item-height': '1rem'}}
           />
