@@ -85,7 +85,7 @@ const TriCalculatorDesktop = () => {
             disabled={!isDisabled}
             onClick={handleFinish}
           >
-            Submit
+            Calculate
           </Button>
           <Button
             style={{width: '100%', marginBottom: '10px'}}

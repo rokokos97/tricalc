@@ -58,7 +58,7 @@ const RunCalculatorMobile = () => {
             size={'large'}
             disabled={!isDisabled}
             onClick={handleSubmit}>
-            Submit
+            Calculate
           </Button>
           <Button
             style={{width: '100%', marginBottom: '10px'}}
