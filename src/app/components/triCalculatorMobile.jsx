@@ -57,10 +57,16 @@ const TriCalculatorDesktop = () => {
     form.resetFields();
   };
   useEffect(() => {
-    if (distance) {
+    if (
+      (swimPace[0]>0 || swimPace[1]>0) &&
+      (t1[0]>0 || t1[1]>0) &&
+      (bikeSpeed[0]>0) &&
+      (t2[0]>0 || t2[1]>0) &&
+      (runPace[0]>0 || runPace[1]>0)
+    ) {
       setIsDisabled(true);
     }
-  }, [distance]);
+  }, [swimPace, t1, bikeSpeed, t2, runPace]);
   const handleFinish = () => {
     setRaceTime(calculateRaceTime(distance, distanceArr, swimPace, t1, bikeSpeed, t2, runPace));
   };
@@ -69,6 +75,7 @@ const TriCalculatorDesktop = () => {
       <Form
         layout={'horizontal'}
         form={form}
+        style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none'}}
         footer={<>
           <Button
             color="primary"
@@ -92,74 +99,110 @@ const TriCalculatorDesktop = () => {
         </>
         }
       >
-        <Form.Item
-          name='swimPace'
-          layout={'vertical'}
-          label={<AutoCenter>swim pace mm:ss</AutoCenter>}
-        >
-          <PickerView
-            onChange={handleSwimPaceChange}
-            columns={[valueArr(1), valueArr(1)]}
-            style={{'--height': '20px', '--item-height': '1rem', 'width': '100%'}}
-          />
-        </Form.Item>
-        <Form.Item
-          name='t1'
-          label={<AutoCenter> T1 time mm:ss</AutoCenter>}
-          layout={'vertical'}
-        >
-          <PickerView
-            onChange={handleT1TimeChange}
-            columns={[valueArr(1), valueArr(1)]}
-            style={{'--height': '20px', '--item-height': '1rem', 'width': '100%'}}
-          />
-        </Form.Item>
-        <Form.Item
-          name='bikeSpeed'
-          label={<AutoCenter>Bike speed km/h</AutoCenter>}
-          layout={'vertical'}
-        >
-          <PickerView
-            onChange={handleBikeSpeedChange}
-            columns={[valueArr(1)]}
-            style={{'--height': '20px', '--item-height': '1rem', 'width': '100%'}}
-          />
-        </Form.Item>
-        <Form.Item
-          name='t2'
-          label={<AutoCenter>T2 time mm:ss</AutoCenter>}
-          layout={'vertical'}
-        >
-          <PickerView
-            onChange={handleT2TimeChange}
-            columns={[valueArr(1), valueArr(1)]}
-            style={{'--height': '20px', '--item-height': '1rem', 'width': '100%'}}
-          />
-        </Form.Item>
+        <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+          <Form.Item
+            name='swimPace'
+            layout={'vertical'}
+            label={
+              <AutoCenter>
+                <div>swim pace</div>
+                <div style={{'textAlign': 'center'}}>{' mm  :  ss '}</div>
+              </AutoCenter>
+            }
+          >
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+              <PickerView
+                onChange={handleSwimPaceChange}
+                columns={[valueArr(1), valueArr(1)]}
+                style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+              />
+            </div>
+          </Form.Item>
+          <Form.Item
+            name='t1'
+            label={
+              <AutoCenter>
+                <div>T1 time</div>
+                <div style={{'textAlign': 'center'}}>{' mm  :  ss '}</div>
+              </AutoCenter>
+            }
+            layout={'vertical'}
+          >
+            <PickerView
+              onChange={handleT1TimeChange}
+              columns={[valueArr(1), valueArr(1)]}
+              style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+            />
+          </Form.Item>
+        </div>
+        <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+          <Form.Item
+            name='bikeSpeed'
+            label={
+              <AutoCenter>
+                <div>Bike speed</div>
+                <div style={{'textAlign': 'center'}}>{' km/h '}</div>
+              </AutoCenter>
+            }
+            layout={'vertical'}
+          >
+            <PickerView
+              onChange={handleBikeSpeedChange}
+              columns={[valueArr(1)]}
+              style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+            />
+          </Form.Item>
+          <Form.Item
+            name='t2'
+            label={
+              <AutoCenter>
+                <div>T2 time</div>
+                <div style={{'textAlign': 'center'}}>{' mm  :  ss '}</div>
+              </AutoCenter>
+            }
+            layout={'vertical'}
+          >
+            <PickerView
+              onChange={handleT2TimeChange}
+              columns={[valueArr(1), valueArr(1)]}
+              style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+            />
+          </Form.Item>
+        </div>
         <Form.Item
           name='runPace'
-          label={<AutoCenter>Run pace mm:ss</AutoCenter>}
+          label={<AutoCenter><div>Run pace</div>
+            <div style={{'textAlign': 'center'}}>{'mm : ss'}</div></AutoCenter>}
           layout={'vertical'}
         >
-          <PickerView
-            onChange={handleRunPaceChange}
-            columns={[valueArr(1), valueArr(1)]}
-            style={{'--height': '20px', '--item-height': '1rem', 'width': '100%'}}
-          />
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <PickerView
+              onChange={handleRunPaceChange}
+              columns={[valueArr(1), valueArr(1)]}
+              style={{'--height': '50px', '--item-height': '1rem', 'width': '40%'}}
+            />
+          </div>
         </Form.Item>
         <Form.Item
           name='distance'
+          label={
+            <AutoCenter>
+              <div>choose your race distance</div>
+            </AutoCenter>
+          }
           layout={'vertical'}
         >
-          <PickerView
-            columns={distanceOptions}
-            onChange={(value) => {
-              setDistance(value[0]);
-            }}
-            style={{'--height': '20px', '--item-height': '1rem'}}
-          />
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <PickerView
+              columns={distanceOptions}
+              onChange={(value) => {
+                setDistance(value[0]);
+              }}
+              style={{'--height': '70px', '--item-height': '1rem', 'width': '60%'}}
+            />
+          </div>
         </Form.Item>
-        {raceTime && <p>{`Your race time may be ${raceTime}`}</p>}
+        {raceTime && <p style={{'textAlign': 'center'}}>{`Your race time may be ${raceTime}`}</p>}
       </Form>;
     </>
   );

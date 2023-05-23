@@ -33,9 +33,15 @@ const Main = () => {
   return (
     <>
       <AutoCenter>
-        <Space style={{marginTop: '20px', marginBottom: '20px'}}>
+        <Space style={{marginTop: '15px'}}>
           <Selector
             options={options}
+            style={{
+              '--border-radius': '100px',
+              '--border': 'solid transparent 1px',
+              '--checked-border': 'solid var(--adm-color-primary) 1px',
+              '--padding': '8px 34px',
+            }}
             showCheckMark={false}
             value={[value]}
             onChange={(v) => {

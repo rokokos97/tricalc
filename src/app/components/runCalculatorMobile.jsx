@@ -4,13 +4,12 @@ import {useForm} from 'antd/lib/form/Form';
 import {runPaceCalculator} from '../utils/runPaceCalculator';
 import {valueArr} from '../utils/valueArr';
 
-
 const RunCalculatorMobile = () => {
   const initState = 0;
   const [hours, setHours] = useState(initState);
   const [minutes, setMinutes] = useState(initState);
   const [seconds, setSeconds] = useState(initState);
-  const [distance, setDistance] = useState(null);
+  const [distance, setDistance] = useState();
   const [pace, setPace] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
   const [form] = useForm();
@@ -41,22 +40,16 @@ const RunCalculatorMobile = () => {
   };
 
   useEffect(() => {
-    if (distance) {
+    if (seconds>0 || minutes>0 || hours>0) {
       setIsDisabled(true);
     }
-  }, [distance]);
+  }, [seconds, minutes, hours]);
   return (
     <>
       <Form
         layout={'horizontal'}
         form={form}
-        initialValues={
-          {
-            time: ['0', '0', '0'],
-            distance: 'choose your race',
-          }
-        }
-        style={{'--border-top': 'none', '--border-bottom': 'none'}}
+        style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none'}}
         footer={<>
           <Button
             color="primary"
@@ -79,35 +72,45 @@ const RunCalculatorMobile = () => {
         </>
         }
       >
-        <AutoCenter>
-          <Form.Item
-            style={{}}
-            name='time'
-            label={<AutoCenter><span>set your finish time hh:mm:ss</span></AutoCenter>}
-            layout={'vertical'}
-          >
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-              <PickerView
-                onChange={handleChange}
-                columns={[valueArr(1), valueArr(1), valueArr(1)]}
-                style={{'--height': '100px', '--item-height': '1rem', 'width': '100%'}}
-              />
-            </div>
-          </Form.Item>
-          <Form.Item
-            name='distance'
-            layout={'vertical'}
-          >
+        <Form.Item
+          style={{}}
+          name='time'
+          label={
+            <AutoCenter>
+              <div>set your finish time</div>
+              <div style={{'textAlign': 'center'}}>{'hh  :  mm  :  ss'}</div>
+            </AutoCenter>
+          }
+          layout={'vertical'}
+        >
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <PickerView
+              onChange={handleChange}
+              columns={[valueArr(1), valueArr(1), valueArr(1)]}
+              style={{'--height': '100px', '--item-height': '1rem', 'width': '60%'}}
+            />
+          </div>
+        </Form.Item>
+        <Form.Item
+          name='distance'
+          label={
+            <AutoCenter>
+              <div>choose your race distance</div>
+            </AutoCenter>
+          }
+          layout={'vertical'}
+        >
+          <div style={{display: 'flex', justifyContent: 'center'}}>
             <PickerView
               columns={basicColumns}
               onChange={(value) => {
                 setDistance(Number(value[0]));
               }}
-              style={{'--height': '70px', '--item-height': '1rem'}}
+              style={{'--height': '70px', '--item-height': '1rem', 'width': '60%'}}
             />
-          </Form.Item>
-          <h2>{pace && <p>{`Your pace may be ${pace}`}</p>}</h2>
-        </AutoCenter>
+          </div>
+        </Form.Item>
+        <h2>{pace && <p style={{'textAlign': 'center'}}>{`Your pace may be ${pace}`}</p>}</h2>
       </Form>
     </>
   );
