@@ -56,6 +56,7 @@ const RunCalculatorMobile = () => {
             distance: 'choose your race',
           }
         }
+        style={{'--border-top': 'none', '--border-bottom': 'none'}}
         footer={<>
           <Button
             color="primary"
@@ -78,31 +79,35 @@ const RunCalculatorMobile = () => {
         </>
         }
       >
-        <Form.Item
-          style={{padding: '20px'}}
-          name='time'
-          label={<AutoCenter><h2>set your finish time hh:mm:ss</h2></AutoCenter>}
-          layout={'vertical'}
-        >
-          <PickerView
-            onChange={handleChange}
-            columns={[valueArr(1), valueArr(1), valueArr(1)]}
-            style={{'--height': '50px', '--item-height': '3rem', 'width': '100%'}}
-          />
-        </Form.Item>
-        <Form.Item
-          name='distance'
-          layout={'vertical'}
-        >
-          <PickerView
-            columns={basicColumns}
-            onChange={(value) => {
-              setDistance(Number(value[0]));
-            }}
-            style={{'--height': '100px', '--item-height': '1rem'}}
-          />
-        </Form.Item>
-        <h2>{pace && <p>{`Your pace may be ${pace}`}</p>}</h2>
+        <AutoCenter>
+          <Form.Item
+            style={{}}
+            name='time'
+            label={<AutoCenter><span>set your finish time hh:mm:ss</span></AutoCenter>}
+            layout={'vertical'}
+          >
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+              <PickerView
+                onChange={handleChange}
+                columns={[valueArr(1), valueArr(1), valueArr(1)]}
+                style={{'--height': '100px', '--item-height': '1rem', 'width': '100%'}}
+              />
+            </div>
+          </Form.Item>
+          <Form.Item
+            name='distance'
+            layout={'vertical'}
+          >
+            <PickerView
+              columns={basicColumns}
+              onChange={(value) => {
+                setDistance(Number(value[0]));
+              }}
+              style={{'--height': '70px', '--item-height': '1rem'}}
+            />
+          </Form.Item>
+          <h2>{pace && <p>{`Your pace may be ${pace}`}</p>}</h2>
+        </AutoCenter>
       </Form>
     </>
   );

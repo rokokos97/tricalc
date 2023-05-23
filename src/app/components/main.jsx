@@ -33,7 +33,7 @@ const Main = () => {
   return (
     <>
       <AutoCenter>
-        <Space>
+        <Space style={{marginTop: '20px', marginBottom: '20px'}}>
           <Selector
             options={options}
             showCheckMark={false}
