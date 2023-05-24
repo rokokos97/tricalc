@@ -110,7 +110,7 @@ const RunCalculatorMobile = () => {
             />
           </div>
         </Form.Item>
-        <h2>{pace && <p style={{'textAlign': 'center'}}>{`Your pace may be ${pace}`}</p>}</h2>
+        {pace && <p style={{'textAlign': 'center'}}>{`Your pace may be ${pace}`}</p>}
       </Form>
     </>
   );

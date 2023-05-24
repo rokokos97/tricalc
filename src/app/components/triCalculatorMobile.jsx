@@ -203,7 +203,7 @@ const TriCalculatorDesktop = () => {
           </div>
         </Form.Item>
         {raceTime && <p style={{'textAlign': 'center'}}>{`Your race time may be ${raceTime}`}</p>}
-      </Form>;
+      </Form>
     </>
   );
 };
