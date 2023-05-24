@@ -114,7 +114,7 @@ const TriCalculatorDesktop = () => {
               <PickerView
                 onChange={handleSwimPaceChange}
                 columns={[valueArr(1), valueArr(1)]}
-                style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+                style={{'--height': '50px', '--item-height': '1rem', 'width': '100%'}}
               />
             </div>
           </Form.Item>
@@ -122,7 +122,7 @@ const TriCalculatorDesktop = () => {
             name='t1'
             label={
               <AutoCenter>
-                <div>T1 time</div>
+                <div>Transit zone 1</div>
                 <div style={{'textAlign': 'center'}}>{' mm  :  ss '}</div>
               </AutoCenter>
             }
@@ -131,7 +131,7 @@ const TriCalculatorDesktop = () => {
             <PickerView
               onChange={handleT1TimeChange}
               columns={[valueArr(1), valueArr(1)]}
-              style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+              style={{'--height': '50px', '--item-height': '1rem', 'width': '100%'}}
             />
           </Form.Item>
         </div>
@@ -149,14 +149,14 @@ const TriCalculatorDesktop = () => {
             <PickerView
               onChange={handleBikeSpeedChange}
               columns={[valueArr(1)]}
-              style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+              style={{'--height': '50px', '--item-height': '1rem', 'width': '100%'}}
             />
           </Form.Item>
           <Form.Item
             name='t2'
             label={
               <AutoCenter>
-                <div>T2 time</div>
+                <div>Transit zone 2</div>
                 <div style={{'textAlign': 'center'}}>{' mm  :  ss '}</div>
               </AutoCenter>
             }
@@ -165,7 +165,7 @@ const TriCalculatorDesktop = () => {
             <PickerView
               onChange={handleT2TimeChange}
               columns={[valueArr(1), valueArr(1)]}
-              style={{'--height': '40px', '--item-height': '1rem', 'width': '100%'}}
+              style={{'--height': '50px', '--item-height': '1rem', 'width': '100%'}}
             />
           </Form.Item>
         </div>
