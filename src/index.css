@@ -16,3 +16,10 @@ code {
     monospace;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+

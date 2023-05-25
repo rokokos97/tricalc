@@ -12,11 +12,14 @@ const RunCalculatorMobile = () => {
   const [distance, setDistance] = useState(null);
   const [pace, setPace] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isPaceDisabled, setIsPaceDisabled]= useState(false);
   const [form] = useForm();
   const handleChange = (value) => {
     setHours(value[0]);
     setMinutes(value[1]);
     setSeconds(value[2]);
+    setIsPaceDisabled(true);
+    console.log(isPaceDisabled);
   };
   const handleSubmit = () => {
     setPace(runPaceCalculator(hours, minutes, seconds, distance/100));
@@ -42,12 +45,6 @@ const RunCalculatorMobile = () => {
         layout={'horizontal'}
         form={form}
         style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none'}}
-        initialValues={
-          {
-            time: ['0', '0', '0'],
-            distance: 'choose your race distance',
-          }
-        }
         footer={<>
           <Button
             color="primary"
@@ -71,7 +68,6 @@ const RunCalculatorMobile = () => {
         }
       >
         <Form.Item
-          name='time'
           label={
             <AutoCenter>
               <div>set your finish time</div>
@@ -89,7 +85,7 @@ const RunCalculatorMobile = () => {
           </div>
         </Form.Item>
         <Form.Item
-          name='distance'
+          disabled={isPaceDisabled}
           label={
             <AutoCenter>
               <span>choose your distance</span>
