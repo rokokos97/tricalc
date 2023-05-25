@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/tricalc/static/css/main.c7fe0624.css",
-    "main.js": "/tricalc/static/js/main.b93b307f.js",
+    "main.js": "/tricalc/static/js/main.85164922.js",
     "static/js/787.0d2fdf2b.chunk.js": "/tricalc/static/js/787.0d2fdf2b.chunk.js",
     "index.html": "/tricalc/index.html",
     "static/media/index.cjs": "/tricalc/static/media/index.433019db0fc741f26829.cjs",
     "main.c7fe0624.css.map": "/tricalc/static/css/main.c7fe0624.css.map",
-    "main.b93b307f.js.map": "/tricalc/static/js/main.b93b307f.js.map",
+    "main.85164922.js.map": "/tricalc/static/js/main.85164922.js.map",
     "787.0d2fdf2b.chunk.js.map": "/tricalc/static/js/787.0d2fdf2b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c7fe0624.css",
-    "static/js/main.b93b307f.js"
+    "static/js/main.85164922.js"
   ]
 }
