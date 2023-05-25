@@ -7,14 +7,19 @@ import TriCalculatorMobile from './triCalculatorMobile';
 const Main = () => {
   return (
     <>
-      <Tabs>
-        <Tabs.Tab title='RUN' key='fruits'>
+      <Tabs
+        style={{
+          '--title-font-size': '24px',
+          '--title-padding': '100px',
+        }}
+      >
+        <Tabs.Tab title='Running' key='fruits' >
           <RunCalculatorMobile/>
         </Tabs.Tab>
-        <Tabs.Tab title='SWIM' key='vegetables'>
+        <Tabs.Tab title='Swimming' key='vegetables'>
           <SwimCalculatorMobile/>
         </Tabs.Tab>
-        <Tabs.Tab title='TRI' key='animals'>
+        <Tabs.Tab title='Triathlon' key='animals'>
           <TriCalculatorMobile/>
         </Tabs.Tab>
       </Tabs>

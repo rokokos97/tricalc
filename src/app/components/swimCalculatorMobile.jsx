@@ -1,109 +1,126 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Button, PickerView, AutoCenter} from 'antd-mobile';
+import {Form, Button, PickerView} from 'antd-mobile';
 import {useForm} from 'antd/lib/form/Form';
-import {runPaceCalculator} from '../utils/runPaceCalculator';
+import {paceCalculator} from '../utils/paceCalculator';
 import {valueArr} from '../utils/valueArr';
+import {runDistanceTimeCalculate} from '../utils/runDistanceTimeCalculate';
 
 const RunCalculatorMobile = () => {
-  const initState = 0;
-  const [hours, setHours] = useState(initState);
-  const [minutes, setMinutes] = useState(initState);
-  const [seconds, setSeconds] = useState(initState);
-  const [distance, setDistance] = useState(null);
-  const [pace, setPace] = useState(null);
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [isPaceDisabled, setIsPaceDisabled]= useState(false);
+  const [distance, setDistance] = useState();
+  const [time, setTime] = useState();
+  const [pace, setPace] = useState();
+  const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
+  const [isPaceDisabled, setIsPaceDisabled] = useState(false);
+  const [isTimeDisabled, setIsTimeDisabled] = useState(false);
   const [form] = useForm();
-  const handleChange = (value) => {
-    setHours(value[0]);
-    setMinutes(value[1]);
-    setSeconds(value[2]);
-    setIsPaceDisabled(true);
-    console.log(isPaceDisabled);
+  const handleTimeChange = (value) => {
+    setTime(value);
+  };
+  const handlePaceChange = (value) => {
+    setPace(value);
   };
   const handleSubmit = () => {
-    setPace(runPaceCalculator(hours, minutes, seconds, distance/100));
+    if (isPaceDisabled) {
+      console.log(paceCalculator(time, distance));
+      setPace(paceCalculator(time, distance/100));
+    } else {
+      setIsTimeDisabled(false);
+      setTime(runDistanceTimeCalculate(distance/100, pace));
+      setIsTimeDisabled(true);
+    }
   };
   const handleReset = () => {
-    setPace(null);
-    setIsDisabled(false);
-    setDistance(null);
-    setHours(0);
-    setMinutes(0);
-    setHours(0);
+    setIsPaceDisabled(false);
+    setIsTimeDisabled(false);
+    setIsCalculateDisabled(true);
     form.resetFields();
+    setTime([0, 0, 0]);
+    setPace([0, 0, 0]);
   };
-
   useEffect(() => {
-    if (distance) {
-      setIsDisabled(true);
+    if (time !== undefined && (+time[0]>0 || +time[1]>0 || +time[2]>0)) {
+      setIsPaceDisabled(true);
+      setIsCalculateDisabled(false);
     }
-  }, [distance]);
+  }, [time]);
+  useEffect(() => {
+    if (pace !== undefined && (+pace[0]>0 || +pace[1]>0 || +pace[2]>0)) {
+      console.log(pace);
+      setIsTimeDisabled(true);
+      setIsCalculateDisabled(false);
+    }
+  }, [pace]);
   return (
     <>
       <Form
-        layout={'horizontal'}
         form={form}
         style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none'}}
         footer={<>
-          <Button
-            color="primary"
-            type="button"
-            style={{width: '100%', marginBottom: '10px'}}
-            size={'large'}
-            disabled={!isDisabled}
-            onClick={handleSubmit}>
-            Calculate
-          </Button>
-          <Button
-            style={{width: '100%', marginBottom: '10px'}}
-            size='large'
-            color="primary"
-            type="button"
-            onClick={handleReset}
-          >
+          <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+            <Button
+              style={{width: '100%', margin: '10px'}}
+              fill='outline'
+              size='large'
+              color="primary"
+              type="button"
+              onClick={handleReset}
+            >
               Reset
-          </Button>
+            </Button>
+            <Button
+              color="primary"
+              type="button"
+              style={{width: '100%', margin: '10px'}}
+              size={'large'}
+              disabled={isCalculateDisabled}
+              onClick={handleSubmit}>
+              Calculate
+            </Button>
+          </div>
         </>
         }
       >
         <Form.Item
-          label={
-            <AutoCenter>
-              <div>set your finish time</div>
-              <div style={{'textAlign': 'center'}}>{'hh  :  mm  :  ss'}</div>
-            </AutoCenter>
-          }
-          layout={'vertical'}
+          disabled={isTimeDisabled}
         >
-          <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div className='title'>race time</div>
+          <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'nowrap'}}>
             <PickerView
-              onChange={handleChange}
-              columns={[valueArr(1), valueArr(1), valueArr(1)]}
-              style={{'--height': '100px', '--item-height': '1rem', 'width': '60%'}}
+              value={time}
+              onChange={handleTimeChange}
+              columns={[valueArr(1), valueArr(1, '\''), valueArr(1, '\"')]}
+              style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '2rem', 'width': '100%'}}
             />
           </div>
         </Form.Item>
         <Form.Item
-          disabled={isPaceDisabled}
-          label={
-            <AutoCenter>
-              <span>choose your distance</span>
-            </AutoCenter>
-          }
-          layout={'vertical'}
+          name='distance'
         >
+          <span className='title'>distance</span>
           <div style={{display: 'flex', justifyContent: 'center'}}>
             <PickerView
-              columns={[valueArr(100, 2)]}
+              columns={[valueArr(100, ' m')]}
               onChange={(value) => {
                 setDistance(Number(value[0]));
               }}
-              style={{'--height': '70px', '--item-height': '1rem', 'width': '60%'}}
+              style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '1.5rem', 'width': '100%'}}
+            />
+          </div>
+
+        </Form.Item>
+        <Form.Item
+          disabled={isPaceDisabled}
+        >
+          <span className='title'>your pace</span>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <PickerView
+              value={pace}
+              onChange={handlePaceChange}
+              columns={[valueArr(1, '\''), valueArr(1, '\"'), valueArr(1)]}
+              style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '2rem', 'width': '100%'}}
             />
           </div>
         </Form.Item>
-        {pace && <p style={{textAlign: 'center'}}>{`Your pace may be ${pace}`}</p>}
       </Form>
     </>
   );
