@@ -13,7 +13,7 @@ const ResetConfirmButtonBlock = ({onReset, onSubmit, isCalculateDisabled}) => {
         type="button"
         onClick={onReset}
       >
-        Reset
+          Reset
       </Button>
       <Button
         color="primary"
@@ -22,7 +22,7 @@ const ResetConfirmButtonBlock = ({onReset, onSubmit, isCalculateDisabled}) => {
         size={'large'}
         disabled={isCalculateDisabled}
         onClick={onSubmit}>
-        Calculate
+          Calculate
       </Button>
     </div>
   );

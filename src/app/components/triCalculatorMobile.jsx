@@ -18,7 +18,7 @@ const TriCalculatorDesktop = () => {
   const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
   const [form] = useForm();
   const pickerViewStyle = {
-    '--height': '70px',
+    '--height': '60px',
     '--item-height': '1.8rem',
     '--item-font-size': '1.6rem',
     'width': '140px',
@@ -170,9 +170,9 @@ const TriCalculatorDesktop = () => {
                 setDistance(value[0]);
               }}
               style={{
-                '--height': '100px',
-                '--item-height': '2rem',
-                '--item-font-size': '1.8rem',
+                '--height': '60px',
+                '--item-height': '1.6rem',
+                '--item-font-size': '1.4rem',
                 'width': '100%',
               }}
             />

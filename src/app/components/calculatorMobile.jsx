@@ -15,6 +15,12 @@ const CalculatorMobile = ({sport}) => {
   const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
   const [isPaceDisabled, setIsPaceDisabled] = useState(false);
   const [isTimeDisabled, setIsTimeDisabled] = useState(false);
+  const pickerViewStyle = {
+    '--height': '100px',
+    '--item-height': '2.2rem',
+    '--item-font-size': '2rem',
+    'width': '100%',
+  };
   const [form] = useForm();
   const handleTimeChange = (value) => setTime(value);
   const handlePaceChange = (value) => setPace(value);
@@ -68,7 +74,7 @@ const CalculatorMobile = ({sport}) => {
               value={time}
               onChange={handleTimeChange}
               columns={[valueArr(1), valueArr(1, '\''), valueArr(1, '\"')]}
-              style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '2rem', 'width': '100%'}}
+              style={pickerViewStyle}
             />
           </div>
         </Form.Item>
@@ -84,7 +90,7 @@ const CalculatorMobile = ({sport}) => {
                 onChange={(value) => {
                   setDistance(Number(value[0]));
                 }}
-                style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '1.5rem', 'width': '100%'}}
+                style={pickerViewStyle}
               />:
               <PickerView
                 columns={runDistanceColumn}
@@ -92,7 +98,7 @@ const CalculatorMobile = ({sport}) => {
                 onChange={(value) => {
                   setDistance(Number(value[0]));
                 }}
-                style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '1.5rem', 'width': '100%'}}
+                style={pickerViewStyle}
               />
             }
           </div>
@@ -107,7 +113,7 @@ const CalculatorMobile = ({sport}) => {
               value={pace}
               onChange={handlePaceChange}
               columns={[valueArr(1, '\''), valueArr(1, '\"'), valueArr(1)]}
-              style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '2rem', 'width': '100%'}}
+              style={pickerViewStyle}
             />
           </div>
         </Form.Item>
