@@ -1,6 +1,7 @@
-export function calculateRaceTime(distance, options, swimPace, t1, bikeSpeed, t2, runPace) {
-  const index = options.findIndex((item) => item.name === distance);
-  const currentDistance = options[index];
+import {distanceArr} from '../data/triDistanceOptions';
+export function calculateRaceTime(distance, swimPace, t1, bikeSpeed, t2, runPace) {
+  const index = distanceArr.findIndex((item) => item.name === distance);
+  const currentDistance = distanceArr[index];
   const swimTime = (parseInt(swimPace[0]) * 60 + parseInt(swimPace[1]))*currentDistance.swim;
   const t1Time = parseInt(t1[0]) * 60 + parseInt(t1[1]);
   const bikeTime = currentDistance.bike / (bikeSpeed / 3600);
@@ -11,5 +12,5 @@ export function calculateRaceTime(distance, options, swimPace, t1, bikeSpeed, t2
   const minutes = Math.floor((totalTime % 3600) / 60);
   const seconds = (totalTime % 60).toFixed();
 
-  return `${hours}:${minutes.toString().padStart(2, '0')}':${seconds.toString().padStart(2, '0')}"`;
+  return `${hours} : ${minutes.toString().padStart(2, '0')}' : ${seconds.toString().padStart(2, '0')}"`;
 }

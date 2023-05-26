@@ -1,33 +1,29 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Button, PickerView} from 'antd-mobile';
+import {Form, PickerView} from 'antd-mobile';
 import {useForm} from 'antd/lib/form/Form';
 import {paceCalculator} from '../utils/paceCalculator';
 import {valueArr} from '../utils/valueArr';
 import {runDistanceColumn} from '../data/runDistance';
 import {runDistanceTimeCalculate} from '../utils/runDistanceTimeCalculate';
 import PropTypes from 'prop-types';
+import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
 const CalculatorMobile = ({sport}) => {
-  console.log(sport);
-  const [distance, setDistance] = useState();
-  const [time, setTime] = useState();
-  const [pace, setPace] = useState();
+  const initialState = [0, 0, 0];
+  const [distance, setDistance] = useState(null);
+  const [time, setTime] = useState(initialState);
+  const [pace, setPace] = useState(initialState);
   const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
   const [isPaceDisabled, setIsPaceDisabled] = useState(false);
   const [isTimeDisabled, setIsTimeDisabled] = useState(false);
   const [form] = useForm();
-  const handleTimeChange = (value) => {
-    setTime(value);
-  };
-  const handlePaceChange = (value) => {
-    setPace(value);
-  };
+  const handleTimeChange = (value) => setTime(value);
+  const handlePaceChange = (value) => setPace(value);
   const handleSubmit = () => {
     if (isPaceDisabled) {
-      console.log(paceCalculator(time, distance));
       setPace(paceCalculator(sport?distance/100:distance, time));
     } else {
       setIsTimeDisabled(false);
-      setTime(runDistanceTimeCalculate(distance, pace));
+      setTime(runDistanceTimeCalculate(sport?distance/100:distance, pace));
       setIsTimeDisabled(true);
     }
   };
@@ -40,14 +36,13 @@ const CalculatorMobile = ({sport}) => {
     setPace([0, 0, 0]);
   };
   useEffect(() => {
-    if (time !== undefined && (+time[0]>0 || +time[1]>0 || +time[2]>0)) {
+    if (time !== undefined && (+time[0]!==0 || +time[1]!==0 || +time[2]!==0)) {
       setIsPaceDisabled(true);
       setIsCalculateDisabled(false);
     }
   }, [time]);
   useEffect(() => {
-    if (pace !== undefined && (+pace[0]>0 || +pace[1]>0 || +pace[2]>0)) {
-      console.log(pace);
+    if (pace !== undefined && (+pace[0]!==0 || +pace[1]!==0 || +pace[2]!==0)) {
       setIsTimeDisabled(true);
       setIsCalculateDisabled(false);
     }
@@ -57,29 +52,11 @@ const CalculatorMobile = ({sport}) => {
       <Form
         form={form}
         style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none'}}
-        footer={<>
-          <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-            <Button
-              style={{width: '100%', margin: '10px'}}
-              fill='outline'
-              size='large'
-              color="primary"
-              type="button"
-              onClick={handleReset}
-            >
-            Reset
-            </Button>
-            <Button
-              color="primary"
-              type="button"
-              style={{width: '100%', margin: '10px'}}
-              size={'large'}
-              disabled={isCalculateDisabled}
-              onClick={handleSubmit}>
-            Calculate
-            </Button>
-          </div>
-        </>
+        footer={
+          <ResetConfirmButtonBlock
+            onReset={handleReset}
+            onSubmit={handleSubmit}
+            isCalculateDisabled={isCalculateDisabled}/>
         }
       >
         <Form.Item
@@ -103,6 +80,7 @@ const CalculatorMobile = ({sport}) => {
             {sport?
               <PickerView
                 columns={[valueArr(100, ' m')]}
+                defaultValue={[[{label: '100 m', value: '100'}]]}
                 onChange={(value) => {
                   setDistance(Number(value[0]));
                 }}
@@ -110,6 +88,7 @@ const CalculatorMobile = ({sport}) => {
               />:
               <PickerView
                 columns={runDistanceColumn}
+                defaultValue={[{label: '1000 meters', value: '1'}]}
                 onChange={(value) => {
                   setDistance(Number(value[0]));
                 }}
