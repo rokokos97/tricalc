@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {AutoCenter, Form, PickerView} from 'antd-mobile';
+import {AutoCenter, Form, PickerView, Result} from 'antd-mobile';
 import {valueArr} from '../utils/valueArr';
 import {calculateRaceTime} from '../utils/raceTimeCalculate';
 import {useForm} from 'antd/lib/form/Form';
 import {triDistanceOptions} from '../data/triDistanceOptions';
 import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
-
+import {SmileOutline} from 'antd-mobile-icons';
 
 const TriCalculatorDesktop = () => {
   const [swimPace, setSwimPace] = useState(['0', '0']);
@@ -178,7 +178,12 @@ const TriCalculatorDesktop = () => {
             />
           </div>
         </Form.Item>
-        {raceTime && <p style={{'textAlign': 'center'}}>{`Your race time may be ${raceTime}`}</p>}
+        {raceTime && <Result
+          icon={<SmileOutline />}
+          status='success'
+          title='Well done'
+          description={`Your race time may be ${raceTime}`}
+        />}
       </Form>
     </>
   );
