@@ -1,7 +1,6 @@
 import React from 'react';
 import {Tabs} from 'antd-mobile';
-import RunCalculatorMobile from './runCalculatorMobile';
-import SwimCalculatorMobile from './swimCalculatorMobile';
+import CalculatorMobile from './calculatorMobile';
 import TriCalculatorMobile from './triCalculatorMobile';
 
 const Main = () => {
@@ -14,10 +13,10 @@ const Main = () => {
         }}
       >
         <Tabs.Tab title='Running' key='fruits' >
-          <RunCalculatorMobile/>
+          <CalculatorMobile/>
         </Tabs.Tab>
         <Tabs.Tab title='Swimming' key='vegetables'>
-          <SwimCalculatorMobile/>
+          <CalculatorMobile sport={'swim'}/>
         </Tabs.Tab>
         <Tabs.Tab title='Triathlon' key='animals'>
           <TriCalculatorMobile/>

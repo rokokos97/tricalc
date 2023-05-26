@@ -106,7 +106,6 @@ const RunCalculatorMobile = () => {
               style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '1.5rem', 'width': '100%'}}
             />
           </div>
-
         </Form.Item>
         <Form.Item
           disabled={isPaceDisabled}

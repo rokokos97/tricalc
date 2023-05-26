@@ -5,8 +5,9 @@ import {paceCalculator} from '../utils/paceCalculator';
 import {valueArr} from '../utils/valueArr';
 import {runDistanceColumn} from '../data/runDistance';
 import {runDistanceTimeCalculate} from '../utils/runDistanceTimeCalculate';
-
-const RunCalculatorMobile = () => {
+import PropTypes from 'prop-types';
+const CalculatorMobile = ({sport}) => {
+  console.log(sport);
   const [distance, setDistance] = useState();
   const [time, setTime] = useState();
   const [pace, setPace] = useState();
@@ -23,7 +24,7 @@ const RunCalculatorMobile = () => {
   const handleSubmit = () => {
     if (isPaceDisabled) {
       console.log(paceCalculator(time, distance));
-      setPace(paceCalculator(time, distance));
+      setPace(paceCalculator(sport?distance/100:distance, time));
     } else {
       setIsTimeDisabled(false);
       setTime(runDistanceTimeCalculate(distance, pace));
@@ -99,13 +100,22 @@ const RunCalculatorMobile = () => {
         >
           <span className='title'>distance</span>
           <div style={{display: 'flex', justifyContent: 'center'}}>
-            <PickerView
-              columns={runDistanceColumn}
-              onChange={(value) => {
-                setDistance(Number(value[0]));
-              }}
-              style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '1.5rem', 'width': '100%'}}
-            />
+            {sport?
+              <PickerView
+                columns={[valueArr(100, ' m')]}
+                onChange={(value) => {
+                  setDistance(Number(value[0]));
+                }}
+                style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '1.5rem', 'width': '100%'}}
+              />:
+              <PickerView
+                columns={runDistanceColumn}
+                onChange={(value) => {
+                  setDistance(Number(value[0]));
+                }}
+                style={{'--height': '100px', '--item-height': '2.2rem', '--item-font-size': '1.5rem', 'width': '100%'}}
+              />
+            }
           </div>
 
         </Form.Item>
@@ -126,5 +136,8 @@ const RunCalculatorMobile = () => {
     </>
   );
 };
+CalculatorMobile.propTypes = {
+  sport: PropTypes.string,
+};
 
-export default RunCalculatorMobile;
+export default CalculatorMobile;

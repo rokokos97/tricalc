@@ -1,4 +1,4 @@
-export function paceCalculator(time, distance) {
+export function paceCalculator(distance, time) {
   const totalSeconds = parseInt(time[0]) * 3600 + parseInt(time[1]) * 60 + parseInt(time[2]);
   const paceInSeconds = (totalSeconds / distance).toFixed(2);
   const paceInMinutes = Math.floor(paceInSeconds / 60).toString();
