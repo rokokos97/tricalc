@@ -99,16 +99,14 @@ const TriCalculatorDesktop = () => {
         </div>
         <div style={displaySpaceEvenly}>
           <Form.Item
-            name='runPace'
+            name='bikeSpeed'
           >
-            <div className='title'>Running pace</div>
-            <div style={displaySpaceEvenly}>
-              <PickerView
-                onChange={handleRunPaceChange}
-                columns={[valueArr(1, '\''), valueArr(1, '\"')]}
-                style={pickerViewStyle}
-              />
-            </div>
+            <div className='title'>Bike speed km/h</div>
+            <PickerView
+              onChange={handleBikeSpeedChange}
+              columns={[valueArr(1)]}
+              style={pickerViewStyle}
+            />
           </Form.Item>
           <Form.Item
             name='t2'
@@ -123,14 +121,16 @@ const TriCalculatorDesktop = () => {
         </div>
         <div style={displaySpaceEvenly}>
           <Form.Item
-            name='bikeSpeed'
+            name='runPace'
           >
-            <div className='title'>Bike speed km/h</div>
-            <PickerView
-              onChange={handleBikeSpeedChange}
-              columns={[valueArr(1)]}
-              style={pickerViewStyle}
-            />
+            <div className='title'>Running pace</div>
+            <div style={displaySpaceEvenly}>
+              <PickerView
+                onChange={handleRunPaceChange}
+                columns={[valueArr(1, '\''), valueArr(1, '\"')]}
+                style={pickerViewStyle}
+              />
+            </div>
           </Form.Item>
           <Form.Item
             name='distance'

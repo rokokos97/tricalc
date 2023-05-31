@@ -19,6 +19,7 @@ code {
 }
 
 .title {
+  text-align: center;
   color: #1677ff;
   font-size: 1.5rem;
   font-weight: normal;
