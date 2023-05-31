@@ -19,7 +19,7 @@ const CalculatorMobile = ({sport}) => {
     '--height': '12.2rem',
     '--item-height': '4rem',
     '--item-font-size': '2.4rem',
-    'width': '140rem',
+    'width': '100%',
   };
   const [form] = useForm();
   const handleTimeChange = (value) => setTime(value);
