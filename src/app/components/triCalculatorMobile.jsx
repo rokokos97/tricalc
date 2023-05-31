@@ -18,10 +18,10 @@ const TriCalculatorDesktop = () => {
   const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
   const [form] = useForm();
   const pickerViewStyle = {
-    '--height': '60px',
-    '--item-height': '1.8rem',
-    '--item-font-size': '1.6rem',
-    'width': '140px',
+    '--height': '12.2px',
+    '--item-height': '4rem',
+    '--item-font-size': '2.4rem',
+    'width': '14rem',
   };
   const displaySpaceEvenly = {display: 'flex', justifyContent: 'space-evenly'};
   const handleSwimPaceChange = (value) => setSwimPace(value);
@@ -80,9 +80,7 @@ const TriCalculatorDesktop = () => {
             name='swimPace'
             layout='vertical'
             label={
-              <AutoCenter>
-                <div>Swimming pace</div>
-              </AutoCenter>
+              <div className='title'>Swimming pace</div>
             }
           >
             <PickerView
@@ -95,9 +93,7 @@ const TriCalculatorDesktop = () => {
             name='t1'
             layout='vertical'
             label={
-              <AutoCenter>
-                <div>Transit zone 1</div>
-              </AutoCenter>
+              <div className='title'>Transit zone 1</div>
             }
           >
             <PickerView
@@ -109,22 +105,18 @@ const TriCalculatorDesktop = () => {
         </div>
         <div style={displaySpaceEvenly}>
           <Form.Item
-            name='bikeSpeed'
-            label={
-              <AutoCenter>
-                <div>Bike speed km/h</div>
-              </AutoCenter>
-            }
+            name='runPace'
+            label={<AutoCenter><div>Running pace</div></AutoCenter>}
             layout={'vertical'}
           >
-            <PickerView
-              onChange={handleBikeSpeedChange}
-              columns={[valueArr(1)]}
-              style={pickerViewStyle}
-            />
+            <div style={displaySpaceEvenly}>
+              <PickerView
+                onChange={handleRunPaceChange}
+                columns={[valueArr(1, '\''), valueArr(1, '\"')]}
+                style={pickerViewStyle}
+              />
+            </div>
           </Form.Item>
-        </div>
-        <div style={displaySpaceEvenly}>
           <Form.Item
             name='t2'
             label={
@@ -140,44 +132,46 @@ const TriCalculatorDesktop = () => {
               style={pickerViewStyle}
             />
           </Form.Item>
+        </div>
+        <div style={displaySpaceEvenly}>
           <Form.Item
-            name='runPace'
-            label={<AutoCenter><div>Running pace</div></AutoCenter>}
+            name='bikeSpeed'
+            label={
+              <div className='title'>Bike speed km/h</div>
+            }
+            layout={'vertical'}
+          >
+            <PickerView
+              onChange={handleBikeSpeedChange}
+              columns={[valueArr(1)]}
+              style={pickerViewStyle}
+            />
+          </Form.Item>
+          <Form.Item
+            name='distance'
+            label={
+              <AutoCenter>
+                <div>Choose your race distance</div>
+              </AutoCenter>
+            }
             layout={'vertical'}
           >
             <div style={displaySpaceEvenly}>
               <PickerView
-                onChange={handleRunPaceChange}
-                columns={[valueArr(1, '\''), valueArr(1, '\"')]}
-                style={pickerViewStyle}
+                columns={triDistanceOptions}
+                onChange={(value) => {
+                  setDistance(value[0]);
+                }}
+                style={{
+                  '--height': '60px',
+                  '--item-height': '1.6rem',
+                  '--item-font-size': '1.4rem',
+                  'width': '100%',
+                }}
               />
             </div>
           </Form.Item>
         </div>
-        <Form.Item
-          name='distance'
-          label={
-            <AutoCenter>
-              <div>Choose your race distance</div>
-            </AutoCenter>
-          }
-          layout={'vertical'}
-        >
-          <div style={displaySpaceEvenly}>
-            <PickerView
-              columns={triDistanceOptions}
-              onChange={(value) => {
-                setDistance(value[0]);
-              }}
-              style={{
-                '--height': '60px',
-                '--item-height': '1.6rem',
-                '--item-font-size': '1.4rem',
-                'width': '100%',
-              }}
-            />
-          </div>
-        </Form.Item>
         {raceTime && <Result
           icon={<SmileOutline />}
           status='success'
