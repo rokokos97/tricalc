@@ -38,7 +38,7 @@ const TriCalculatorDesktop = () => {
     setBikeSpeed(['0']);
     setTransitZone2(['0', '0']);
     setRunPace(['0', '0']);
-    form.resetFields(['swimPace', 't1', 'bikeSpeed', 't2', 'runPace']);
+    form.resetFields(['swimPace', 't1', 'bikeSpeed', 't2', 'runPace', 'distance']);
   };
   useEffect(() => {
     if (

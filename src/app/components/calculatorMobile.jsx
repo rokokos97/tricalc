@@ -16,9 +16,9 @@ const CalculatorMobile = ({sport}) => {
   const [isPaceDisabled, setIsPaceDisabled] = useState(false);
   const [isTimeDisabled, setIsTimeDisabled] = useState(false);
   const pickerViewStyle = {
-    '--height': '100px',
-    '--item-height': '2.2rem',
-    '--item-font-size': '2rem',
+    '--height': '12.2rem',
+    '--item-height': '4rem',
+    '--item-font-size': '2.4rem',
     'width': '100%',
   };
   const [form] = useForm();
@@ -37,7 +37,7 @@ const CalculatorMobile = ({sport}) => {
     setIsPaceDisabled(false);
     setIsTimeDisabled(false);
     setIsCalculateDisabled(true);
-    form.resetFields();
+    form.resetFields(['distance']);
     setTime([0, 0, 0]);
     setPace([0, 0, 0]);
   };
@@ -57,7 +57,12 @@ const CalculatorMobile = ({sport}) => {
     <>
       <Form
         form={form}
-        style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none'}}
+        style={{
+          '--border-top': 'none',
+          '--border-bottom': 'none',
+          '--border-inner': 'none',
+          'paddingTop': '1.6rem',
+        }}
         footer={
           <ResetConfirmButtonBlock
             onReset={handleReset}
@@ -68,7 +73,7 @@ const CalculatorMobile = ({sport}) => {
         <Form.Item
           disabled={isTimeDisabled}
         >
-          <div className='title'>race time</div>
+          <div className='title'>Race time</div>
           <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'nowrap'}}>
             <PickerView
               value={time}
@@ -81,7 +86,7 @@ const CalculatorMobile = ({sport}) => {
         <Form.Item
           name='distance'
         >
-          <span className='title'>distance</span>
+          <span className='title'>Distance</span>
           <div style={{display: 'flex', justifyContent: 'center'}}>
             {sport?
               <PickerView
@@ -107,7 +112,7 @@ const CalculatorMobile = ({sport}) => {
         <Form.Item
           disabled={isPaceDisabled}
         >
-          <span className='title'>your pace</span>
+          <span className='title'>Your pace</span>
           <div style={{display: 'flex', justifyContent: 'center'}}>
             <PickerView
               value={pace}

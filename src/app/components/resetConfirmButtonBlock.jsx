@@ -3,10 +3,16 @@ import {Button} from 'antd-mobile';
 import PropTypes from 'prop-types';
 
 const ResetConfirmButtonBlock = ({onReset, onSubmit, isCalculateDisabled}) => {
+  const buttonStyle = {width: '17.2rem', margin: '0.8rem', fontSize: '1.8rem'};
   return (
-    <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+    <div style={{
+      'display': 'flex',
+      'justifyContent': 'center',
+      'position': 'fixed',
+      'bottom': '0',
+      'left': '0'}}>
       <Button
-        style={{width: '100%', margin: '10px'}}
+        style={buttonStyle}
         fill='outline'
         size='large'
         color="primary"
@@ -18,7 +24,7 @@ const ResetConfirmButtonBlock = ({onReset, onSubmit, isCalculateDisabled}) => {
       <Button
         color="primary"
         type="button"
-        style={{width: '100%', margin: '10px'}}
+        style={buttonStyle}
         size={'large'}
         disabled={isCalculateDisabled}
         onClick={onSubmit}>
