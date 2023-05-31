@@ -1,5 +1,6 @@
 import {distanceArr} from '../data/triDistanceOptions';
 export function calculateRaceTime(distance, swimPace, t1, bikeSpeed, t2, runPace) {
+  console.log(distance, swimPace, t1, bikeSpeed, t2, runPace);
   const index = distanceArr.findIndex((item) => item.name === distance);
   const currentDistance = distanceArr[index];
   const swimTime = (parseInt(swimPace[0]) * 60 + parseInt(swimPace[1]))*currentDistance.swim;

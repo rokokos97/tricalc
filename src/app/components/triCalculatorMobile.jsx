@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Form, PickerView, Result} from 'antd-mobile';
+import {Form, PickerView} from 'antd-mobile';
 import {valueArr} from '../utils/valueArr';
 import {calculateRaceTime} from '../utils/raceTimeCalculate';
 import {useForm} from 'antd/lib/form/Form';
 import {triDistanceOptions} from '../data/triDistanceOptions';
 import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
-import {SmileOutline} from 'antd-mobile-icons';
+import MessageArea from './messageArea';
 
 const TriCalculatorDesktop = () => {
   const [swimPace, setSwimPace] = useState(['0', '0']);
@@ -68,12 +68,6 @@ const TriCalculatorDesktop = () => {
         layout={'horizontal'}
         form={form}
         style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none', 'paddingTop': '1.6rem'}}
-        footer={
-          <ResetConfirmButtonBlock
-            onReset={handleReset}
-            onSubmit={handleSubmit}
-            isCalculateDisabled={isCalculateDisabled}/>
-        }
       >
         <div style={displaySpaceEvenly}>
           <Form.Item
@@ -147,13 +141,12 @@ const TriCalculatorDesktop = () => {
             </div>
           </Form.Item>
         </div>
-        {raceTime && <Result
-          icon={<SmileOutline />}
-          status='success'
-          title='Well done'
-          description={`Your race time may be ${raceTime}`}
-        />}
+        {raceTime && <MessageArea result={raceTime}/>}
       </Form>
+      <ResetConfirmButtonBlock
+        onReset={handleReset}
+        onSubmit={handleSubmit}
+        isCalculateDisabled={isCalculateDisabled}/>
     </>
   );
 };

@@ -7,14 +7,16 @@ import {runDistanceColumn} from '../data/runDistance';
 import {runDistanceTimeCalculate} from '../utils/runDistanceTimeCalculate';
 import PropTypes from 'prop-types';
 import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
+import MessageArea from './messageArea';
 const CalculatorMobile = ({sport}) => {
   const initialState = [0, 0, 0];
-  const [distance, setDistance] = useState(null);
+  const [distance, setDistance] = useState(1);
   const [time, setTime] = useState(initialState);
   const [pace, setPace] = useState(initialState);
   const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
   const [isPaceDisabled, setIsPaceDisabled] = useState(false);
   const [isTimeDisabled, setIsTimeDisabled] = useState(false);
+  const [result, setResult] = useState(null);
   const pickerViewStyle = {
     '--height': '11rem',
     '--item-height': '4rem',
@@ -26,10 +28,14 @@ const CalculatorMobile = ({sport}) => {
   const handlePaceChange = (value) => setPace(value);
   const handleSubmit = () => {
     if (isPaceDisabled) {
-      setPace(paceCalculator(sport?distance/100:distance, time));
+      const result = paceCalculator(sport?distance/100:distance, time);
+      setPace(result);
+      setResult(`${result[0]}' : ${result[1]}"`);
     } else {
+      const result = runDistanceTimeCalculate(sport?distance/100:distance, pace);
       setIsTimeDisabled(false);
-      setTime(runDistanceTimeCalculate(sport?distance/100:distance, pace));
+      setTime(result);
+      setResult(`${result[0]} : ${result[1]}' : ${result[2]}"`);
       setIsTimeDisabled(true);
     }
   };
@@ -37,6 +43,7 @@ const CalculatorMobile = ({sport}) => {
     setIsPaceDisabled(false);
     setIsTimeDisabled(false);
     setIsCalculateDisabled(true);
+    setResult(null);
     form.resetFields(['distance']);
     setTime([0, 0, 0]);
     setPace([0, 0, 0]);
@@ -116,6 +123,7 @@ const CalculatorMobile = ({sport}) => {
             />
           </div>
         </Form.Item>
+        {result && <MessageArea result={result}/>}
         <ResetConfirmButtonBlock
           onReset={handleReset}
           onSubmit={handleSubmit}
