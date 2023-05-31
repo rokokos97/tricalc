@@ -16,7 +16,7 @@ const CalculatorMobile = ({sport}) => {
   const [isPaceDisabled, setIsPaceDisabled] = useState(false);
   const [isTimeDisabled, setIsTimeDisabled] = useState(false);
   const pickerViewStyle = {
-    '--height': '12.2rem',
+    '--height': '11rem',
     '--item-height': '4rem',
     '--item-font-size': '2.4rem',
     'width': '100%',
@@ -63,12 +63,6 @@ const CalculatorMobile = ({sport}) => {
           '--border-inner': 'none',
           'paddingTop': '1.6rem',
         }}
-        footer={
-          <ResetConfirmButtonBlock
-            onReset={handleReset}
-            onSubmit={handleSubmit}
-            isCalculateDisabled={isCalculateDisabled}/>
-        }
       >
         <Form.Item
           disabled={isTimeDisabled}
@@ -86,7 +80,7 @@ const CalculatorMobile = ({sport}) => {
         <Form.Item
           name='distance'
         >
-          <span className='title'>Distance</span>
+          <div className='title'>Distance</div>
           <div style={{display: 'flex', justifyContent: 'center'}}>
             {sport?
               <PickerView
@@ -112,7 +106,7 @@ const CalculatorMobile = ({sport}) => {
         <Form.Item
           disabled={isPaceDisabled}
         >
-          <span className='title'>Your pace</span>
+          <div className='title'>Your pace</div>
           <div style={{display: 'flex', justifyContent: 'center'}}>
             <PickerView
               value={pace}
@@ -122,6 +116,10 @@ const CalculatorMobile = ({sport}) => {
             />
           </div>
         </Form.Item>
+        <ResetConfirmButtonBlock
+          onReset={handleReset}
+          onSubmit={handleSubmit}
+          isCalculateDisabled={isCalculateDisabled}/>
       </Form>
     </>
   );
