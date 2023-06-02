@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/tricalc/static/css/main.fda9556f.css",
-    "main.js": "/tricalc/static/js/main.3905f3f4.js",
+    "main.css": "/tricalc/static/css/main.2cd134d8.css",
+    "main.js": "/tricalc/static/js/main.01ce32af.js",
     "static/js/787.0d2fdf2b.chunk.js": "/tricalc/static/js/787.0d2fdf2b.chunk.js",
+    "static/media/FontsFree-Net-SFProText-Regular.ttf": "/tricalc/static/media/FontsFree-Net-SFProText-Regular.90da7ab18293ca42e335.ttf",
     "index.html": "/tricalc/index.html",
     "static/media/index.cjs": "/tricalc/static/media/index.433019db0fc741f26829.cjs",
-    "main.fda9556f.css.map": "/tricalc/static/css/main.fda9556f.css.map",
-    "main.3905f3f4.js.map": "/tricalc/static/js/main.3905f3f4.js.map",
+    "main.2cd134d8.css.map": "/tricalc/static/css/main.2cd134d8.css.map",
+    "main.01ce32af.js.map": "/tricalc/static/js/main.01ce32af.js.map",
     "787.0d2fdf2b.chunk.js.map": "/tricalc/static/js/787.0d2fdf2b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fda9556f.css",
-    "static/js/main.3905f3f4.js"
+    "static/css/main.2cd134d8.css",
+    "static/js/main.01ce32af.js"
   ]
 }
