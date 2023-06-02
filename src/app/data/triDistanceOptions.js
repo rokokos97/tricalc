@@ -1,9 +1,9 @@
 export const triDistanceOptions = [[
-  {label: '25.75 km', value: 'sprint'},
-  {label: '51.5 km', value: 'olympic'},
-  {label: '70.3 mi', value: 'ironman70'},
-  {label: '140.7 mi', value: 'ironman140'},
-  {label: '410 km', value: 'kyivman'},
+  {label: 'Sprint', value: 'sprint'},
+  {label: 'Olympic', value: 'olympic'},
+  {label: 'Half Ironman', value: 'ironman70'},
+  {label: 'Ironman', value: 'ironman140'},
+  {label: 'Kyivman', value: 'kyivman'},
 ]];
 export const distanceArr = [
   {name: 'sprint', swim: 7.5, bike: 20, run: 5},

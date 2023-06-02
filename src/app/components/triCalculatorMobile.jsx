@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Form, PickerView} from 'antd-mobile';
+import {Dialog, Form, PickerView} from 'antd-mobile';
 import {valueArr} from '../utils/valueArr';
 import {calculateRaceTime} from '../utils/raceTimeCalculate';
 import {useForm} from 'antd/lib/form/Form';
 import {triDistanceOptions} from '../data/triDistanceOptions';
 import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
 import MessageArea from './messageArea';
+import {InformationCircleOutline} from 'antd-mobile-icons';
 
 const TriCalculatorDesktop = () => {
   const [swimPace, setSwimPace] = useState(['0', '0']);
@@ -17,13 +18,18 @@ const TriCalculatorDesktop = () => {
   const [raceTime, setRaceTime] = useState(null);
   const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
   const [form] = useForm();
-  const pickerViewStyle = {
+  const formStyle = {
+    '--border-top': 'none',
+    '--border-bottom': 'none',
+    '--border-inner': 'none',
+    'paddingTop': '1.6rem',
+  };
+  const pickerView = {
     '--height': '12.2rem',
     '--item-height': '4rem',
     '--item-font-size': '2.4rem',
     'width': '17.3rem',
   };
-  const displaySpaceEvenly = {display: 'flex', justifyContent: 'center'};
   const handleSwimPaceChange = (value) => setSwimPace(value);
   const handleT1TimeChange = (value) => setTransitZone1(value);
   const handleBikeSpeedChange = (value) => setBikeSpeed(value);
@@ -65,19 +71,20 @@ const TriCalculatorDesktop = () => {
   return (
     <>
       <Form
+        style={formStyle}
         layout={'horizontal'}
         form={form}
-        style={{'--border-top': 'none', '--border-bottom': 'none', '--border-inner': 'none', 'paddingTop': '1.6rem'}}
       >
-        <div style={displaySpaceEvenly}>
+        <div className='center'>
           <Form.Item
             name='swimPace'
           >
             <div className='title'>Swimming pace</div>
             <PickerView
+              className='pickerView'
               onChange={handleSwimPaceChange}
               columns={[valueArr(1, '\''), valueArr(1, '\"')]}
-              style={pickerViewStyle}
+              style={pickerView}
             />
           </Form.Item>
           <Form.Item
@@ -87,11 +94,11 @@ const TriCalculatorDesktop = () => {
             <PickerView
               onChange={handleT1TimeChange}
               columns={[valueArr(1, '\''), valueArr(1, '\"')]}
-              style={pickerViewStyle}
+              style={pickerView}
             />
           </Form.Item>
         </div>
-        <div style={displaySpaceEvenly}>
+        <div className='center'>
           <Form.Item
             name='bikeSpeed'
           >
@@ -99,7 +106,7 @@ const TriCalculatorDesktop = () => {
             <PickerView
               onChange={handleBikeSpeedChange}
               columns={[valueArr(1)]}
-              style={pickerViewStyle}
+              style={pickerView}
             />
           </Form.Item>
           <Form.Item
@@ -109,34 +116,53 @@ const TriCalculatorDesktop = () => {
             <PickerView
               onChange={handleT2TimeChange}
               columns={[valueArr(1, '\''), valueArr(1, '\"')]}
-              style={pickerViewStyle}
+              style={pickerView}
             />
           </Form.Item>
         </div>
-        <div style={displaySpaceEvenly}>
+        <div className='center'>
           <Form.Item
             name='runPace'
           >
             <div className='title'>Running pace</div>
-            <div style={displaySpaceEvenly}>
+            <div className='center'>
               <PickerView
                 onChange={handleRunPaceChange}
                 columns={[valueArr(1, '\''), valueArr(1, '\"')]}
-                style={pickerViewStyle}
+                style={pickerView}
               />
             </div>
           </Form.Item>
           <Form.Item
             name='distance'
           >
-            <div className='title'>Race distance km</div>
-            <div style={displaySpaceEvenly}>
+            <div className='title'>
+              {
+                'Distance km '
+              }
+              <InformationCircleOutline
+                onClick={() =>
+                  Dialog.alert({
+                    content: (
+                      <div className='dialog'>
+                        <p>Sprint - 25 km 750 m</p>
+                        <p>Olympic - 51 km 500 m</p>
+                        <p>Half Ironman - 112 km 997 m</p>
+                        <p>Ironman - 225 km 994 m</p>
+                        <p>Kyivman - 420 km</p>
+                      </div>
+                    ),
+                  })
+                }
+              />
+            </div>
+            <div className='center'>
               <PickerView
                 columns={triDistanceOptions}
                 onChange={(value) => {
                   setDistance(value[0]);
                 }}
-                style={pickerViewStyle}
+                style={pickerView}
               />
             </div>
           </Form.Item>

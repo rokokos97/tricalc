@@ -4,7 +4,7 @@ import {useForm} from 'antd/lib/form/Form';
 import {paceCalculator} from '../utils/paceCalculator';
 import {valueArr} from '../utils/valueArr';
 import {runDistanceColumn} from '../data/runDistance';
-import {runDistanceTimeCalculate} from '../utils/runDistanceTimeCalculate';
+import {timeCalculate} from '../utils/timeCalculate';
 import PropTypes from 'prop-types';
 import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
 import MessageArea from './messageArea';
@@ -17,6 +17,12 @@ const CalculatorMobile = ({sport}) => {
   const [isPaceDisabled, setIsPaceDisabled] = useState(false);
   const [isTimeDisabled, setIsTimeDisabled] = useState(false);
   const [result, setResult] = useState(null);
+  const formStyle = {
+    '--border-top': 'none',
+    '--border-bottom': 'none',
+    '--border-inner': 'none',
+    'paddingTop': '1.6rem',
+  };
   const pickerViewStyle = {
     '--height': '11rem',
     '--item-height': '4rem',
@@ -30,12 +36,12 @@ const CalculatorMobile = ({sport}) => {
     if (isPaceDisabled) {
       const result = paceCalculator(sport?distance/100:distance, time);
       setPace(result);
-      setResult(`${result[0]}' : ${result[1]}"`);
+      setResult(`${result[0]}' ${result[1]}"`);
     } else {
-      const result = runDistanceTimeCalculate(sport?distance/100:distance, pace);
+      const result = timeCalculate(sport?distance/100:distance, pace);
       setIsTimeDisabled(false);
       setTime(result);
-      setResult(`${result[0]} : ${result[1]}' : ${result[2]}"`);
+      setResult(`${result[0]} ${result[1]}' ${result[2]}"`);
       setIsTimeDisabled(true);
     }
   };
@@ -64,18 +70,13 @@ const CalculatorMobile = ({sport}) => {
     <>
       <Form
         form={form}
-        style={{
-          '--border-top': 'none',
-          '--border-bottom': 'none',
-          '--border-inner': 'none',
-          'paddingTop': '1.6rem',
-        }}
+        style={formStyle}
       >
         <Form.Item
           disabled={isTimeDisabled}
         >
           <div className='title'>Race time</div>
-          <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'nowrap'}}>
+          <div className='center'>
             <PickerView
               value={time}
               onChange={handleTimeChange}
@@ -88,7 +89,7 @@ const CalculatorMobile = ({sport}) => {
           name='distance'
         >
           <div className='title'>Distance</div>
-          <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div className='center'>
             {sport?
               <PickerView
                 columns={[valueArr(100, ' m')]}
@@ -108,13 +109,12 @@ const CalculatorMobile = ({sport}) => {
               />
             }
           </div>
-
         </Form.Item>
         <Form.Item
           disabled={isPaceDisabled}
         >
           <div className='title'>Your pace</div>
-          <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div className='center'>
             <PickerView
               value={pace}
               onChange={handlePaceChange}
@@ -123,7 +123,7 @@ const CalculatorMobile = ({sport}) => {
             />
           </div>
         </Form.Item>
-        {result && <MessageArea result={result}/>}
+        {result && <MessageArea result={result} pace={isPaceDisabled}/>}
         <ResetConfirmButtonBlock
           onReset={handleReset}
           onSubmit={handleSubmit}

@@ -1,8 +1,8 @@
 import React from 'react';
-import Main from './components/main';
+import MainPage from './components/mainPage';
 function App() {
   return (
-    <Main className='main'/>
+    <MainPage className='main'/>
   );
 }
 export default App;
