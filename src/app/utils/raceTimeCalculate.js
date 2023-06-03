@@ -9,9 +9,8 @@ export function calculateRaceTime(distance, swimPace, t1, bikeSpeed, t2, runPace
   const t2Time = parseInt(t2[0]) * 60 + parseInt(t2[1]);
   const runTime = (parseInt(runPace[0]) * 60 + parseInt(runPace[1]))*currentDistance.run;
   const totalTime = swimTime + t1Time + bikeTime + t2Time + runTime;
-  const hours = Math.floor(totalTime / 3600);
-  const minutes = Math.floor((totalTime % 3600) / 60);
-  const seconds = (totalTime % 60).toFixed();
-
-  return `${hours} : ${minutes.toString().padStart(2, '0')}' : ${seconds.toString().padStart(2, '0')}"`;
+  const hours = Math.floor(totalTime / 3600).toString();
+  const minutes = Math.floor((totalTime % 3600) / 60).toString();
+  const seconds = (totalTime % 60).toFixed().toString();
+  return [hours, minutes, seconds];
 }

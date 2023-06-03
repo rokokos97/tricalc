@@ -36,12 +36,12 @@ const CalculatorMobile = ({sport}) => {
     if (isPaceDisabled) {
       const result = paceCalculator(sport?distance/100:distance, time);
       setPace(result);
-      setResult(`${result[0]}' ${result[1]}"`);
+      setResult({pace: result});
     } else {
       const result = timeCalculate(sport?distance/100:distance, pace);
       setIsTimeDisabled(false);
       setTime(result);
-      setResult(`${result[0]} ${result[1]}' ${result[2]}"`);
+      setResult({time: result});
       setIsTimeDisabled(true);
     }
   };
@@ -123,7 +123,7 @@ const CalculatorMobile = ({sport}) => {
             />
           </div>
         </Form.Item>
-        {result && <MessageArea result={result} pace={isPaceDisabled}/>}
+        {result && <MessageArea isTime={isTimeDisabled} isPace={isPaceDisabled} result={result}/>}
         <ResetConfirmButtonBlock
           onReset={handleReset}
           onSubmit={handleSubmit}

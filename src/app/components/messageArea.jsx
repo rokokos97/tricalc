@@ -1,5 +1,5 @@
 import React from 'react';
-const messageArea = ({result, pace}) => {
+const messageArea = ({result}) => {
   return (
     <div style={{
       margin: '0 0.5rem',
@@ -8,7 +8,19 @@ const messageArea = ({result, pace}) => {
       textAlign: 'center',
       padding: '1rem',
     }}>
-      <div>{pace?`Your pace may be  ${result}`:`Your time ${result}`}</div>
+      <div>
+        { result.time &&
+          `Your time ${result.time[0]}:${result.time[1]}':${result.time[2]}"`
+        }
+      </div>
+      <div>
+        { result.pace &&
+          `Your pace may be ${result.pace[0]}':${result.pace[1]}"`}
+      </div>
+      <div>
+        { result.tri &&
+          `Your time ${result.tri[0]}:${result.tri[1]}':${result.tri[2]}"`}
+      </div>
       <div>Well Dona!</div>
       <div>You Are Bad Ass!</div>
     </div>

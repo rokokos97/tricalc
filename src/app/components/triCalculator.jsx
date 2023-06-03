@@ -8,7 +8,7 @@ import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
 import MessageArea from './messageArea';
 import {InformationCircleOutline} from 'antd-mobile-icons';
 
-const TriCalculatorDesktop = () => {
+const TriCalculator = () => {
   const [swimPace, setSwimPace] = useState(['0', '0']);
   const [transitZone1, setTransitZone1] = useState(['0', '0']);
   const [bikeSpeed, setBikeSpeed] = useState(['0']);
@@ -58,15 +58,15 @@ const TriCalculatorDesktop = () => {
     }
   }, [swimPace, transitZone1, bikeSpeed, transitZone2, runPace]);
   const handleSubmit = () => {
-    setRaceTime(
-        calculateRaceTime(
-            distance,
-            swimPace,
-            transitZone1,
-            bikeSpeed,
-            transitZone2,
-            runPace,
-        ));
+    setRaceTime({tri: calculateRaceTime(
+        distance,
+        swimPace,
+        transitZone1,
+        bikeSpeed,
+        transitZone2,
+        runPace,
+    )},
+    );
   };
   return (
     <>
@@ -177,4 +177,4 @@ const TriCalculatorDesktop = () => {
   );
 };
 
-export default TriCalculatorDesktop;
+export default TriCalculator;

@@ -53,6 +53,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.32.2",
     "gh-pages": "^5.0.0",
+    "jest": "^27.5.1",
     "react-native": "^0.71.7"
   }
 }
