@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Dialog, Form, PickerView} from 'antd-mobile';
-import {valueArr} from '../utils/valueArr';
+import {createArr} from '../utils/createArr';
 import {calculateRaceTime} from '../utils/raceTimeCalculate';
 import {useForm} from 'antd/lib/form/Form';
 import {triDistanceOptions} from '../data/triDistanceOptions';
@@ -83,7 +83,7 @@ const TriCalculator = () => {
             <PickerView
               className='pickerView'
               onChange={handleSwimPaceChange}
-              columns={[valueArr(1, '\''), valueArr(1, '\"')]}
+              columns={[createArr( '\''), createArr( '\"')]}
               style={pickerView}
             />
           </Form.Item>
@@ -93,7 +93,7 @@ const TriCalculator = () => {
             <div className='title'>Transit zone 1</div>
             <PickerView
               onChange={handleT1TimeChange}
-              columns={[valueArr(1, '\''), valueArr(1, '\"')]}
+              columns={[createArr( '\''), createArr('\"')]}
               style={pickerView}
             />
           </Form.Item>
@@ -105,7 +105,7 @@ const TriCalculator = () => {
             <div className='title'>Bike speed km/h</div>
             <PickerView
               onChange={handleBikeSpeedChange}
-              columns={[valueArr(1)]}
+              columns={[createArr(undefined, undefined, undefined, 51)]}
               style={pickerView}
             />
           </Form.Item>
@@ -115,7 +115,7 @@ const TriCalculator = () => {
             <div className='title'>Transit zone 2</div>
             <PickerView
               onChange={handleT2TimeChange}
-              columns={[valueArr(1, '\''), valueArr(1, '\"')]}
+              columns={[createArr('\''), createArr( '\"')]}
               style={pickerView}
             />
           </Form.Item>
@@ -128,7 +128,7 @@ const TriCalculator = () => {
             <div className='center'>
               <PickerView
                 onChange={handleRunPaceChange}
-                columns={[valueArr(1, '\''), valueArr(1, '\"')]}
+                columns={[createArr('\''), createArr( '\"')]}
                 style={pickerView}
               />
             </div>

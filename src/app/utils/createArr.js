@@ -1,6 +1,6 @@
-export function valueArr(a, label='', d=1) {
+export function createArr(label='', step=1, start=0, end=60) {
   const valueArr = [];
-  for (let i=0; i<60*a*d; i+=a) {
+  for (let i=start; i<end*step; i+=step) {
     valueArr.push({label: `${i}${label}`, value: `${i}`});
   }
   return valueArr;

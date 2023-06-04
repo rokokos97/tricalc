@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Form, PickerView} from 'antd-mobile';
 import {useForm} from 'antd/lib/form/Form';
 import {paceCalculator} from '../utils/paceCalculator';
-import {valueArr} from '../utils/valueArr';
+import {createArr} from '../utils/createArr';
 import {runDistanceColumn} from '../data/runDistance';
 import {timeCalculate} from '../utils/timeCalculate';
 import PropTypes from 'prop-types';
@@ -80,7 +80,7 @@ const CalculatorMobile = ({sport}) => {
             <PickerView
               value={time}
               onChange={handleTimeChange}
-              columns={[valueArr(1), valueArr(1, '\''), valueArr(1, '\"')]}
+              columns={[createArr(undefined, undefined, undefined, 31), createArr( '\''), createArr( '\"')]}
               style={pickerViewStyle}
             />
           </div>
@@ -92,8 +92,7 @@ const CalculatorMobile = ({sport}) => {
           <div className='center'>
             {sport?
               <PickerView
-                columns={[valueArr(100, ' m')]}
-                defaultValue={[[{label: '100 m', value: '100'}]]}
+                columns={[createArr( ' m', 100, 100, 51)]}
                 onChange={(value) => {
                   setDistance(Number(value[0]));
                 }}
@@ -118,7 +117,7 @@ const CalculatorMobile = ({sport}) => {
             <PickerView
               value={pace}
               onChange={handlePaceChange}
-              columns={[valueArr(1, '\''), valueArr(1, '\"'), valueArr(1)]}
+              columns={[createArr('\''), createArr( '\"'), createArr()]}
               style={pickerViewStyle}
             />
           </div>
