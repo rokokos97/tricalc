@@ -10,7 +10,7 @@ const messageArea = ({result}) => {
     }}>
       <div>
         { result.time &&
-          `Your time ${result.time[0]}:${result.time[1]}':${result.time[2]}"`
+          `Your time may be ${result.time[0]}:${result.time[1]}':${result.time[2]}"`
         }
       </div>
       <div>
@@ -19,7 +19,7 @@ const messageArea = ({result}) => {
       </div>
       <div>
         { result.tri &&
-          `Your time ${result.tri[0]}:${result.tri[1]}':${result.tri[2]}"`}
+          `Your time may be ${result.tri[0]}:${result.tri[1]}':${result.tri[2]}"`}
       </div>
       <div>Well Dona!</div>
       <div>You Are Bad Ass!</div>
