@@ -1,5 +1,11 @@
 import React from 'react';
 const messageArea = ({result}) => {
+  const showPaceResult = (pace) => {
+    if (pace[0]==='0') {
+      return `Your pace may be ${pace[1]}':${pace[2]}":${pace[3]}`;
+    }
+    return `Your pace may be ${pace[0]}:${pace[1]}':${pace[2]}"`;
+  };
   return (
     <div style={{
       margin: '0 0.5rem',
@@ -14,8 +20,7 @@ const messageArea = ({result}) => {
         }
       </div>
       <div>
-        { result.pace &&
-          `Your pace may be ${result.pace[0]}':${result.pace[1]}"`}
+        { result.pace && showPaceResult(result.pace) }
       </div>
       <div>
         { result.tri &&
