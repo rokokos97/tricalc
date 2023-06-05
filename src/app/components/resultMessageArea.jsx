@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const resultMessageArea = ({result}) => {
   const showPaceResult = (pace) => {
     if (pace[0]==='0') {
-      return `Your pace may be ${pace[1]}':${pace[2]}":${pace[3]}`;
+      return `Your pace may be ${pace[1]}':${pace[2]}".${pace[3]}`;
     }
     return `Your pace may be ${pace[0]}:${pace[1]}':${pace[2]}"`;
   };
