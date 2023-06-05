@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 const resultMessageArea = ({result}) => {
   const showPaceResult = (pace) => {
     if (pace[0]==='0') {
@@ -30,5 +31,8 @@ const resultMessageArea = ({result}) => {
       <div>You Are Bad Ass!</div>
     </div>
   );
+};
+resultMessageArea.propTypes = {
+  result: PropTypes.object,
 };
 export default resultMessageArea;

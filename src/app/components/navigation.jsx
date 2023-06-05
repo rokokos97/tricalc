@@ -12,7 +12,6 @@ const tabs = [
 const Navigation = () => {
   return (
     <>
-      {/* <p className='header'>TRIC 1.0</p> */}
       <div className='main'>
         <Tabs
           className='tabs'

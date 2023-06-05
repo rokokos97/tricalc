@@ -6,7 +6,6 @@ import {useForm} from 'antd/lib/form/Form';
 import {triDistanceOptions} from '../data/triDistanceOptions';
 import ButtonsBlock from './buttonsBlock';
 import MessageArea from './resultMessageArea';
-// import {InformationCircleOutline} from 'antd-mobile-icons';
 
 const TriBlock = () => {
   const [swimPace, setSwimPace] = useState(['0', '0']);
@@ -140,21 +139,6 @@ const TriBlock = () => {
               {
                 'Distance km '
               }
-              {/* <InformationCircleOutline */}
-              {/*   onClick={() => */}
-              {/*     Dialog.alert({ */}
-              {/*       content: ( */}
-              {/*         <div className='dialog'> */}
-              {/*           <p>Sprint - 25 km 750 m</p> */}
-              {/*           <p>Olympic - 51 km 500 m</p> */}
-              {/*           <p>Half Ironman - 112 km 997 m</p> */}
-              {/*           <p>Ironman - 225 km 994 m</p> */}
-              {/*           <p>Kyivman - 420 km</p> */}
-              {/*         </div> */}
-              {/*       ), */}
-              {/*     }) */}
-              {/*   } */}
-              {/* /> */}
             </div>
             <div className='center'>
               <PickerView
@@ -176,5 +160,4 @@ const TriBlock = () => {
     </>
   );
 };
-
 export default TriBlock;
