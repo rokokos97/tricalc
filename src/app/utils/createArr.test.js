@@ -1,4 +1,4 @@
-import {createArr} from './createArr';
+import {createArrayOfOptions} from './createArrayOfOptions';
 
 describe('createArr', ()=>{
   it('should all argument set correctly', ()=>{
@@ -14,7 +14,7 @@ describe('createArr', ()=>{
       {label: '4\'', value: '4'},
     ];
 
-    const result = createArr(label, step, start, end);
+    const result = createArrayOfOptions(label, step, start, end);
 
     expect(result).toEqual(expectedResult);
   });
@@ -32,7 +32,7 @@ describe('createArr', ()=>{
       {label: '4', value: '4'},
     ];
 
-    const result = createArr(label, step, start, end);
+    const result = createArrayOfOptions(label, step, start, end);
 
     expect(result).toEqual(expectedResult);
   });
@@ -50,7 +50,7 @@ describe('createArr', ()=>{
       {label: '4\'', value: '4'},
     ];
 
-    const result = createArr(label, step, start, end);
+    const result = createArrayOfOptions(label, step, start, end);
 
     expect(result).toEqual(expectedResult);
   });
@@ -68,7 +68,7 @@ describe('createArr', ()=>{
       {label: '4\'', value: '4'},
     ];
 
-    const result = createArr(label, step, start, end);
+    const result = createArrayOfOptions(label, step, start, end);
 
     expect(result).toEqual(expectedResult);
   });
@@ -140,7 +140,7 @@ describe('createArr', ()=>{
       {label: '59\'', value: '59'},
     ];
 
-    const result = createArr(label, step, start, end);
+    const result = createArrayOfOptions(label, step, start, end);
 
     expect(result).toEqual(expectedResult);
   });

@@ -1,4 +1,4 @@
-import {paceCalculator} from './paceCalculator';
+import {paceCalculate} from './paceCalculate';
 
 describe('paceCalculator', () => {
   it('should calculate pace correctly', () => {
@@ -6,7 +6,7 @@ describe('paceCalculator', () => {
     const time = ['0', '36', '0'];
     const expectedPace = ['0', '3', '36', '0'];
 
-    const result = paceCalculator(distance, time);
+    const result = paceCalculate(distance, time);
 
     expect(result).toEqual(expectedPace);
   });
@@ -16,7 +16,7 @@ describe('paceCalculator', () => {
     const time = ['1', '0', '0'];
     const expectedPace = ['1', '0', '0', '0'];
 
-    const result = paceCalculator(distance, time);
+    const result = paceCalculate(distance, time);
 
     expect(result).toEqual(expectedPace);
   });
@@ -26,7 +26,7 @@ describe('paceCalculator', () => {
     const time = undefined;
     const expectedPace = ['0', '0', '0', '0'];
 
-    const result = paceCalculator(distance, time);
+    const result = paceCalculate(distance, time);
 
     expect(result).toEqual(expectedPace);
   });

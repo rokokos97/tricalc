@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Dialog, Form, PickerView} from 'antd-mobile';
-import {createArr} from '../utils/createArr';
-import {calculateRaceTime} from '../utils/raceTimeCalculate';
+import {Form, PickerView} from 'antd-mobile';
+import {createArrayOfOptions} from '../utils/createArrayOfOptions';
+import {calculateTriRaceTime} from '../utils/calculateTriRaceTime';
 import {useForm} from 'antd/lib/form/Form';
 import {triDistanceOptions} from '../data/triDistanceOptions';
-import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
-import MessageArea from './messageArea';
-import {InformationCircleOutline} from 'antd-mobile-icons';
+import ButtonsBlock from './buttonsBlock';
+import MessageArea from './resultMessageArea';
+// import {InformationCircleOutline} from 'antd-mobile-icons';
 
-const TriCalculator = () => {
+const TriBlock = () => {
   const [swimPace, setSwimPace] = useState(['0', '0']);
   const [transitZone1, setTransitZone1] = useState(['0', '0']);
   const [bikeSpeed, setBikeSpeed] = useState(['0']);
@@ -58,7 +58,7 @@ const TriCalculator = () => {
     }
   }, [swimPace, transitZone1, bikeSpeed, transitZone2, runPace]);
   const handleSubmit = () => {
-    setRaceTime({tri: calculateRaceTime(
+    setRaceTime({tri: calculateTriRaceTime(
         distance,
         swimPace,
         transitZone1,
@@ -83,7 +83,7 @@ const TriCalculator = () => {
             <PickerView
               className='pickerView'
               onChange={handleSwimPaceChange}
-              columns={[createArr( '\''), createArr( '\"')]}
+              columns={[createArrayOfOptions( '\''), createArrayOfOptions( '\"')]}
               style={pickerView}
             />
           </Form.Item>
@@ -93,7 +93,7 @@ const TriCalculator = () => {
             <div className='title'>Transit zone 1</div>
             <PickerView
               onChange={handleT1TimeChange}
-              columns={[createArr( '\''), createArr('\"')]}
+              columns={[createArrayOfOptions( '\''), createArrayOfOptions('\"')]}
               style={pickerView}
             />
           </Form.Item>
@@ -105,7 +105,7 @@ const TriCalculator = () => {
             <div className='title'>Bike speed km/h</div>
             <PickerView
               onChange={handleBikeSpeedChange}
-              columns={[createArr(undefined, undefined, undefined, 51)]}
+              columns={[createArrayOfOptions(undefined, undefined, undefined, 51)]}
               style={pickerView}
             />
           </Form.Item>
@@ -115,7 +115,7 @@ const TriCalculator = () => {
             <div className='title'>Transit zone 2</div>
             <PickerView
               onChange={handleT2TimeChange}
-              columns={[createArr('\''), createArr( '\"')]}
+              columns={[createArrayOfOptions('\''), createArrayOfOptions( '\"')]}
               style={pickerView}
             />
           </Form.Item>
@@ -128,7 +128,7 @@ const TriCalculator = () => {
             <div className='center'>
               <PickerView
                 onChange={handleRunPaceChange}
-                columns={[createArr('\''), createArr( '\"')]}
+                columns={[createArrayOfOptions('\''), createArrayOfOptions( '\"')]}
                 style={pickerView}
               />
             </div>
@@ -140,21 +140,21 @@ const TriCalculator = () => {
               {
                 'Distance km '
               }
-              <InformationCircleOutline
-                onClick={() =>
-                  Dialog.alert({
-                    content: (
-                      <div className='dialog'>
-                        <p>Sprint - 25 km 750 m</p>
-                        <p>Olympic - 51 km 500 m</p>
-                        <p>Half Ironman - 112 km 997 m</p>
-                        <p>Ironman - 225 km 994 m</p>
-                        <p>Kyivman - 420 km</p>
-                      </div>
-                    ),
-                  })
-                }
-              />
+              {/* <InformationCircleOutline */}
+              {/*   onClick={() => */}
+              {/*     Dialog.alert({ */}
+              {/*       content: ( */}
+              {/*         <div className='dialog'> */}
+              {/*           <p>Sprint - 25 km 750 m</p> */}
+              {/*           <p>Olympic - 51 km 500 m</p> */}
+              {/*           <p>Half Ironman - 112 km 997 m</p> */}
+              {/*           <p>Ironman - 225 km 994 m</p> */}
+              {/*           <p>Kyivman - 420 km</p> */}
+              {/*         </div> */}
+              {/*       ), */}
+              {/*     }) */}
+              {/*   } */}
+              {/* /> */}
             </div>
             <div className='center'>
               <PickerView
@@ -169,7 +169,7 @@ const TriCalculator = () => {
         </div>
         {raceTime && <MessageArea result={raceTime}/>}
       </Form>
-      <ResetConfirmButtonBlock
+      <ButtonsBlock
         onReset={handleReset}
         onSubmit={handleSubmit}
         isCalculateDisabled={isCalculateDisabled}/>
@@ -177,4 +177,4 @@ const TriCalculator = () => {
   );
 };
 
-export default TriCalculator;
+export default TriBlock;

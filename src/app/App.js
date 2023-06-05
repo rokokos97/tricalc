@@ -1,8 +1,8 @@
 import React from 'react';
-import MainPage from './components/mainPage';
+import Navigation from './components/navigation';
 function App() {
   return (
-    <MainPage className='main'/>
+    <Navigation className='main'/>
   );
 }
 export default App;

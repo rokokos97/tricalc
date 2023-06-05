@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {Form, PickerView} from 'antd-mobile';
 import {useForm} from 'antd/lib/form/Form';
-import {paceCalculator} from '../utils/paceCalculator';
-import {createArr} from '../utils/createArr';
-import {runDistanceColumn} from '../data/runDistance';
+import {paceCalculate} from '../utils/paceCalculate';
+import {createArrayOfOptions} from '../utils/createArrayOfOptions';
+import {runDistanceColumn} from '../data/runDistanceOptions';
 import {timeCalculate} from '../utils/timeCalculate';
 import PropTypes from 'prop-types';
-import ResetConfirmButtonBlock from './resetConfirmButtonBlock';
-import MessageArea from './messageArea';
-const CalculatorMobile = ({sport}) => {
+import ButtonsBlock from './buttonsBlock';
+import MessageArea from './resultMessageArea';
+const SwimRunBlock = ({sport}) => {
   const initialState = [0, 0, 0];
   const [distance, setDistance] = useState(1);
   const [time, setTime] = useState(initialState);
@@ -34,7 +34,7 @@ const CalculatorMobile = ({sport}) => {
   const handlePaceChange = (value) => setPace(value);
   const handleSubmit = () => {
     if (isPaceDisabled) {
-      const result = paceCalculator(sport?distance/100:distance, time);
+      const result = paceCalculate(sport?distance/100:distance, time);
       setPace(result);
       setResult({pace: result});
     } else {
@@ -80,7 +80,7 @@ const CalculatorMobile = ({sport}) => {
             <PickerView
               value={time}
               onChange={handleTimeChange}
-              columns={[createArr(undefined, undefined, undefined, 31), createArr( '\''), createArr( '\"')]}
+              columns={[createArrayOfOptions(undefined, undefined, undefined, 31), createArrayOfOptions( '\''), createArrayOfOptions( '\"')]}
               style={pickerViewStyle}
             />
           </div>
@@ -92,7 +92,7 @@ const CalculatorMobile = ({sport}) => {
           <div className='center'>
             {sport?
               <PickerView
-                columns={[createArr( ' m', 100, 100, 51)]}
+                columns={[createArrayOfOptions( ' m', 100, 100, 51)]}
                 onChange={(value) => {
                   setDistance(Number(value[0]));
                 }}
@@ -117,13 +117,13 @@ const CalculatorMobile = ({sport}) => {
             <PickerView
               value={pace}
               onChange={handlePaceChange}
-              columns={[createArr('\''), createArr( '\"'), createArr()]}
+              columns={[createArrayOfOptions('\''), createArrayOfOptions( '\"'), createArrayOfOptions()]}
               style={pickerViewStyle}
             />
           </div>
         </Form.Item>
         {result && <MessageArea isTime={isTimeDisabled} isPace={isPaceDisabled} result={result}/>}
-        <ResetConfirmButtonBlock
+        <ButtonsBlock
           onReset={handleReset}
           onSubmit={handleSubmit}
           isCalculateDisabled={isCalculateDisabled}/>
@@ -131,8 +131,8 @@ const CalculatorMobile = ({sport}) => {
     </>
   );
 };
-CalculatorMobile.propTypes = {
+SwimRunBlock.propTypes = {
   sport: PropTypes.string,
 };
 
-export default CalculatorMobile;
+export default SwimRunBlock;

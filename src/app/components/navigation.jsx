@@ -1,15 +1,15 @@
 import React from 'react';
 import {Tabs} from 'antd-mobile';
-import CalculatorMobile from './calculatorMobile';
-import TriCalculator from './triCalculator';
+import SwimRunBlock from './swimRunBlock';
+import TriBlock from './triBlock';
 
 const tabs = [
-  {title: 'RUNNING', key: 'running', component: <CalculatorMobile />},
-  {title: 'SWIMMING', key: 'swimming', component: <CalculatorMobile sport={'swimming'} />},
-  {title: 'TRIATHLON', key: 'triathlon', component: <TriCalculator />},
+  {title: 'RUNNING', key: 'running', component: <SwimRunBlock />},
+  {title: 'SWIMMING', key: 'swimming', component: <SwimRunBlock sport={'swimming'} />},
+  {title: 'TRIATHLON', key: 'triathlon', component: <TriBlock />},
 ];
 
-const MainPage = () => {
+const Navigation = () => {
   return (
     <>
       {/* <p className='header'>TRIC 1.0</p> */}
@@ -31,4 +31,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Navigation;
