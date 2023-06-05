@@ -80,7 +80,12 @@ const SwimRunBlock = ({sport}) => {
             <PickerView
               value={time}
               onChange={handleTimeChange}
-              columns={[createArrayOfOptions(undefined, undefined, undefined, 31), createArrayOfOptions( '\''), createArrayOfOptions( '\"')]}
+              columns={[createArrayOfOptions(
+                  undefined,
+                  undefined,
+                  undefined,
+                  31,
+              ), createArrayOfOptions( '\''), createArrayOfOptions( '\"')]}
               style={pickerViewStyle}
             />
           </div>
