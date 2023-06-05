@@ -11,7 +11,7 @@ const resultMessageArea = ({result}) => {
     <div style={{
       margin: '0 0.5rem',
       background: 'rgba(0, 181, 120, 0.3)',
-      borderRadius: '0.8rem',
+      borderRadius: '0.4rem',
       textAlign: 'center',
       padding: '1rem',
     }}>
@@ -28,7 +28,6 @@ const resultMessageArea = ({result}) => {
           `Your time may be ${result.tri[0]}:${result.tri[1]}':${result.tri[2]}"`}
       </div>
       <div>Well Dona!</div>
-      <div>You Are Bad Ass!</div>
     </div>
   );
 };
