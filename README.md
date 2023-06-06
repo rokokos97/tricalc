@@ -1,6 +1,12 @@
 ## About Pace Calculator App
 
-This app is designed for people who want to improve their results!
+<p> 
+    <a href="https://rokokos97.github.io/tricalc/">
+        <img src="https://cdn-icons-png.flaticon.com/512/6835/6835995.png" alt="TRI logo" height="140">
+    </a>
+</p>
+
+This app is specifically designed to help individuals improve their results in triathlon races. With its user-friendly interface and advanced features, you can track and analyze your performance, set goals, and take your training to the next level. Whether you're a seasoned athlete or just starting out, this app will be your ultimate companion in achieving your personal best in triathlon.
 
 ## Technologies and libraries:
 

@@ -27,7 +27,7 @@ const resultMessageArea = ({result}) => {
         { result.tri &&
           `Your time may be ${result.tri[0]}:${result.tri[1]}':${result.tri[2]}"`}
       </div>
-      <div>Well Dona!</div>
+      <div>Well Done!</div>
     </div>
   );
 };
