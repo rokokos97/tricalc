@@ -1,13 +1,17 @@
 ## About [***Tricalc***](https://pace-calculator.online) App 1.0
 
-![Shows an illustrated the tricalc logo](https://cdn-icons-png.flaticon.com/512/6835/6835995.png)
-
-This app is specifically designed to help individuals improve their results in triathlon races.
+<p align="center"> 
+    <a href="https://pace-calculator.online/">
+        <img src="https://cdn-icons-png.flaticon.com/512/6835/6835995.png" alt="tricalc logo" height="140">
+    </a>
+</p>
+<p>  
+   This app is specifically designed to help individuals improve their results in triathlon races.
 With its user-friendly interface and advanced features, you can track and analyze your performance,
 set goals, and take your training to the next level. Whether you're a seasoned athlete or just starting out,
 this app will be your ultimate companion in achieving your personal best in triathlon.
-This app was developed in collaboration with my old friend and the talented designer, **Olig Umansky**.
-
+This app was developed in collaboration with my old friend and the talented designer, Olig Umansky.
+</p>
 
 ### Technologies and libraries:
 
