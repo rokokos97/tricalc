@@ -2,7 +2,11 @@
 
 <p align="center"> 
     <a href="https://pace-calculator.online/">
-        <img src="https://cdn-icons-png.flaticon.com/512/6835/6835995.png" alt="tricalc logo" height="140">
+         <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rokokos97/tricalc/b37a836976e5735d1f4d87b703e5a636aecd9867/public/tri.svg">
+            <source media="(prefers-color-scheme: light)" srcset="https://cdn-icons-png.flaticon.com/512/6835/6835995.png">
+            <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://cdn-icons-png.flaticon.com/512/6835/6835995.png">
+         </picture>
     </a>
 </p>
 <p>  
