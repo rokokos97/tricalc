@@ -1,16 +1,17 @@
-## About Pace Calculator App
+## About [***Tricalc***](https://pace-calculator.online) App 1.0
 
-<p> 
-    <a href="https://rokokos97.github.io/tricalc/">
-        <img src="https://cdn-icons-png.flaticon.com/512/6835/6835995.png" alt="TRI logo" height="140">
-    </a>
-</p>
+![Shows an illustrated the tricalc logo](https://cdn-icons-png.flaticon.com/512/6835/6835995.png)
 
-This app is specifically designed to help individuals improve their results in triathlon races. With its user-friendly interface and advanced features, you can track and analyze your performance, set goals, and take your training to the next level. Whether you're a seasoned athlete or just starting out, this app will be your ultimate companion in achieving your personal best in triathlon.
+This app is specifically designed to help individuals improve their results in triathlon races.
+With its user-friendly interface and advanced features, you can track and analyze your performance,
+set goals, and take your training to the next level. Whether you're a seasoned athlete or just starting out,
+this app will be your ultimate companion in achieving your personal best in triathlon.
+This app was developed in collaboration with my old friend and the talented designer, **Olig Umansky**.
 
-## Technologies and libraries:
 
-## ReactJS
+### Technologies and libraries:
+
+### ReactJS
 <p> 
     <a href="https://react.dev/">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js logo" height="140">
