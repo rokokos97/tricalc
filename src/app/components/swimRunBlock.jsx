@@ -35,6 +35,7 @@ const SwimRunBlock = ({sport}) => {
   const handleSubmit = () => {
     if (isPaceDisabled) {
       const result = paceCalculate(sport?distance/100:distance, time);
+      console.log('result', result);
       setPace(result);
       setResult({pace: result});
     } else {
@@ -50,7 +51,7 @@ const SwimRunBlock = ({sport}) => {
     setIsTimeDisabled(false);
     setIsCalculateDisabled(true);
     setResult(null);
-    form.resetFields(['distance']);
+    form.resetFields();
     setTime([0, 0, 0]);
     setPace([0, 0, 0]);
   };

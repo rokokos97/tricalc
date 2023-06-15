@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Form, PickerView} from 'antd-mobile';
 import {createArrayOfOptions} from '../utils/createArrayOfOptions';
 import {calculateTriRaceTime} from '../utils/calculateTriRaceTime';
-import {useForm} from 'antd/lib/form/Form';
 import {triDistanceOptions} from '../data/triDistanceOptions';
 import ButtonsBlock from './buttonsBlock';
 import MessageArea from './resultMessageArea';
@@ -16,7 +15,7 @@ const TriBlock = () => {
   const [distance, setDistance] = useState(null);
   const [raceTime, setRaceTime] = useState(null);
   const [isCalculateDisabled, setIsCalculateDisabled] = useState(true);
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const formStyle = {
     '--border-top': 'none',
     '--border-bottom': 'none',
@@ -34,6 +33,7 @@ const TriBlock = () => {
   const handleBikeSpeedChange = (value) => setBikeSpeed(value);
   const handleT2TimeChange = (value) => setTransitZone2(value);
   const handleRunPaceChange = (value) => setRunPace(value);
+  const handleDistanceChange = (value) => setDistance(value[0]);
   const handleReset = () => {
     setIsCalculateDisabled(true);
     setRaceTime(null);
@@ -43,7 +43,7 @@ const TriBlock = () => {
     setBikeSpeed(['0']);
     setTransitZone2(['0', '0']);
     setRunPace(['0', '0']);
-    form.resetFields(['swimPace', 't1', 'bikeSpeed', 't2', 'runPace', 'distance']);
+    form.resetFields();
   };
   useEffect(() => {
     if (
@@ -143,9 +143,7 @@ const TriBlock = () => {
             <div className='center'>
               <PickerView
                 columns={triDistanceOptions}
-                onChange={(value) => {
-                  setDistance(value[0]);
-                }}
+                onChange={handleDistanceChange}
                 style={pickerView}
               />
             </div>

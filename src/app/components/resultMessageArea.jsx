@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 const resultMessageArea = ({result}) => {
+  console.log(result);
   const showPaceResult = (pace) => {
     if (pace[0]==='0') {
       return `Your pace may be ${pace[1]}':${pace[2]}".${pace[3]}`;
