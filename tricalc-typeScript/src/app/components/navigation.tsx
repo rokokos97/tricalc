@@ -11,7 +11,7 @@ const tabs: ITabs[] = [
   { title: 'TRIATHLON', key: 'tri', component: <TriBlock/> }
 ]
 
-const Navigation: React.FC = () => {
+const Navigation = (): JSX.Element => {
   return (
         <>
             <div className='main'>

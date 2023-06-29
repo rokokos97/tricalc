@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button } from 'antd-mobile'
-import { type IButtonsBlockProps } from '../../interfaces'
+import {type IButtonsBlockProps, IStyle} from '../../interfaces'
 
-const ButtonsBlock: React.FC<IButtonsBlockProps> = ({ onReset, onSubmit, isCalculateDisabled }) => {
-  const buttonStyle = { width: '50%', margin: '0.5rem', fontSize: '1.8rem' }
+const ButtonsBlock: React.FC<IButtonsBlockProps> = ({ onReset, onSubmit, isCalculateDisabled }):JSX.Element => {
+  const buttonStyle:IStyle = { width: '50%', margin: '0.5rem', fontSize: '1.8rem' }
   return (
     <>
       <div

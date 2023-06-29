@@ -30,3 +30,7 @@ export interface IResultMessageAreaProps {
   isPace?: boolean
   result: IResult
 }
+
+export interface IStyle {
+  [key: string]: string
+}
