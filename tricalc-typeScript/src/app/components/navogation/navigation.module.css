@@ -1,0 +1,19 @@
+.nav ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+.nav ul li a{
+    color: #000000;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    text-decoration: none;
+}
+.navActive {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    color: #1677ff;
+    text-decoration: none;
+    border-bottom: solid 0.2rem #1677ff;
+}
