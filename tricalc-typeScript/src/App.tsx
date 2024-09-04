@@ -1,7 +1,7 @@
 import React from 'react'
-import Navigation from './app/components/navigation'
+import Navigation from './app/components/navogation/navigation'
 
-const App: React.FC = () => {
+const App = () => {
   return (
       <div>
         <Navigation/>

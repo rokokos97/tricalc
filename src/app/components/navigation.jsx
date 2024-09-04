@@ -9,7 +9,7 @@ const tabs = [
   {title: 'TRIATHLON', key: 'triathlon', component: <TriBlock />},
 ];
 
-const Navigation = () => {
+const  Navigation = () => {
   return (
     <>
       <div className='main'>

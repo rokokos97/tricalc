@@ -6,9 +6,9 @@ import { runDistanceColumn, initialState } from '../data/options'
 import { timeCalculate } from '../utils/timeCalculate'
 import ButtonsBlock from './buttonsBlock'
 import MessageArea from './resultMessageArea'
-import type { IResult } from '../../interfaces'
+import type {IResult, IStyle} from '../../interfaces'
 import type { PickerValue } from 'antd-mobile/es/components/picker-view'
-const RunBlock: React.FC = () => {
+const RunBlock = ():JSX.Element => {
   const [distance, setDistance] = useState<number>(1)
   const [time, setTime] = useState<string[] | undefined>(initialState)
   const [pace, setPace] = useState<string[] | undefined>(initialState)
@@ -16,13 +16,13 @@ const RunBlock: React.FC = () => {
   const [isPaceDisabled, setIsPaceDisabled] = useState<boolean>(false)
   const [isTimeDisabled, setIsTimeDisabled] = useState<boolean>(false)
   const [result, setResult] = useState<null | IResult>()
-  const formStyle = {
+  const formStyle: IStyle = {
     '--border-top': 'none',
     '--border-bottom': 'none',
     '--border-inner': 'none',
     paddingTop: '1.6rem'
   }
-  const pickerViewStyle = {
+  const pickerViewStyle: IStyle = {
     '--height': '11rem',
     '--item-height': '4rem',
     '--item-font-size': '2.4rem',
