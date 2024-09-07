@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/tricalc/static/css/main.fd2c904e.css",
-    "main.js": "/tricalc/static/js/main.3ef9f14b.js",
-    "static/js/787.0d2fdf2b.chunk.js": "/tricalc/static/js/787.0d2fdf2b.chunk.js",
+    "main.css": "/tricalc/static/css/main.927476f2.css",
+    "main.js": "/tricalc/static/js/main.2d281ee1.js",
+    "static/js/787.7d464d7c.chunk.js": "/tricalc/static/js/787.7d464d7c.chunk.js",
     "static/media/SFProText-Regular.ttf": "/tricalc/static/media/SFProText-Regular.90da7ab18293ca42e335.ttf",
     "static/media/Inter-Regular.ttf": "/tricalc/static/media/Inter-Regular.e89cb19905e7db5591b0.ttf",
     "index.html": "/tricalc/index.html",
     "static/media/index.cjs": "/tricalc/static/media/index.433019db0fc741f26829.cjs",
-    "main.fd2c904e.css.map": "/tricalc/static/css/main.fd2c904e.css.map",
-    "main.3ef9f14b.js.map": "/tricalc/static/js/main.3ef9f14b.js.map",
-    "787.0d2fdf2b.chunk.js.map": "/tricalc/static/js/787.0d2fdf2b.chunk.js.map"
+    "main.927476f2.css.map": "/tricalc/static/css/main.927476f2.css.map",
+    "main.2d281ee1.js.map": "/tricalc/static/js/main.2d281ee1.js.map",
+    "787.7d464d7c.chunk.js.map": "/tricalc/static/js/787.7d464d7c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd2c904e.css",
-    "static/js/main.3ef9f14b.js"
+    "static/css/main.927476f2.css",
+    "static/js/main.2d281ee1.js"
   ]
 }
