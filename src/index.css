@@ -6,6 +6,12 @@
   font-family: 'Inter';
   src: url('app/fonts/Inter-Regular.ttf') format('truetype');
 }
+
+* {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 html {
   font-size: 10px;
   font-family: 'SFProText', serif;
