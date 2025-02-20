@@ -1,4 +1,10 @@
-## About [***Tricalc***](https://pace-calculator.online) App 1.0
+# Tricalc - Triathlon Race Calculator
+
+[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
+[![Ant Design](https://img.shields.io/badge/Ant%20Design-5.4.7-blue.svg)](https://ant.design/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+## About
 
 <p align="center"> 
     <a href="https://pace-calculator.online/">
@@ -17,9 +23,37 @@ this app will be your ultimate companion in achieving your personal best in tria
 This app was developed in collaboration with my old friend and the talented designer, Olig Umansky.
 </p>
 
-### Technologies and libraries:
+## 🚀 Quick Start
 
-### ReactJS
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/rokokos97/tricalc.git
+cd tricalc
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server
+```bash
+npm start
+# or
+yarn start
+```
+
+The app will be available at `http://localhost:3000`
+
+## 🛠️ Technologies and Libraries
 <p align="center"> 
     <a href="https://react.dev/">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js logo" height="140">
@@ -70,57 +104,58 @@ Docker takes away repetitive, mundane configuration tasks and is used throughout
 
 | [Docs](https://docs.docker.com/) | [Quick Start](https://docs.docker.com/get-started/) | [Video Tutorial](https://www.youtube.com/watch?v=n9uCgUzfeRQ) |
 
+## 📝 Scripts
 
-### Eslint
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run deploy` - Deploys the app to GitHub Pages
 
-<p align="center"> 
-    <a href="https://eslint.org/">
-        <img src="https://www.vectorlogo.zone/logos/eslint/eslint-ar21.svg" alt="ESLint logo" height="60">
-    </a>
-</p>
-ESLint statically analyzes your code to quickly find problems. It is built into most text editors and you can run ESLint as part of your continuous integration pipeline.
-<p align="center">  
+## 🛠 Testing
 
-</p>
+This project uses Jest and React Testing Library for testing. To run the tests:
 
-| [Docs](https://eslint.org/docs/latest/) | [Quick Start](https://eslint.org/docs/latest/use/getting-started) |
+```bash
+npm test
+```
 
-## Deploy
+To run tests in watch mode:
 
-### Hosting 
+```bash
+npm test -- --watch
+```
 
-<p align="center"> 
-    <a href="https://www.kamatera.com/">
-        <img src="https://www.kamatera.com/images/logo.svg" alt="KAMATERA logo" height="60">
-    </a>
-</p>
+## 🚀 Deployment
 
-<p align="center">  
-    When you register on our platform, you will receive a server for your usage during a trial period of 1 month.
-</p>
+The app is deployed using Docker and hosted on Kamatera. For local deployment using Docker:
 
-### Domain name
+1. Build the Docker image:
+```bash
+docker build -t tricalc .
+```
 
-<p align="center"> 
-    <a href="https://uk.wix.com/">
-        <img src="https://logos-world.net/wp-content/uploads/2020/10/Wix-Logo.png" alt="WIX logo" height="60">
-    </a>
-</p>
+2. Run the container:
+```bash
+docker run -p 3000:3000 tricalc
+```
 
-<p align="center">  
-    Here, you can register a free domain name for a period of 3 months.
-</p>
+## 💪 Contributing
 
-### SSL-certificate
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-<p align="center"> 
-    <a href="https://letsencrypt.org/">
-        <img src="https://letsencrypt.org/images/letsencrypt-logo-horizontal.svg" alt="letsencrypt logo" height="60">
-    </a>
-</p>
+## 👨‍💻 Authors
 
-<p align="center">  
-    A nonprofit Certificate Authority providing TLS certificates to 300 million websites.
-</p>
+- **Rostyslav Lisovyi** - *Initial work* - [rokokos97](https://github.com/rokokos97)
+- **Olig Umansky** - *Design*
 
-| [How to install SSL to your website](https://www.youtube.com/watch?v=HXQ2eLwvoxY&t=1112s) |
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+
+
+
